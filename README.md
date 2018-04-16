@@ -1,6 +1,6 @@
 # Bookstore
 
-![VersionEye](https://github.com/Dimetriu/bookstore-rg/network/dependencies)
+![VersionEye](https://img.shields.io/versioneye/d/ruby/rails.svg)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
