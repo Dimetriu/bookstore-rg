@@ -1,6 +1,7 @@
 # Bookstore
 
 ![VersionEye](https://img.shields.io/versioneye/d/ruby/rails.svg)
+![BuiltWithLove](https://img.shields.io/badge/built%20with-love-orange.svg)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
