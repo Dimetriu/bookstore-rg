@@ -9,6 +9,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', platforms: :ruby
 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
+gem 'jquery-rails'
+
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
