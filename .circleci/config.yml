@@ -1,0 +1,65 @@
+version: 2
+jobs:
+  build:
+    docker:
+       - image: circleci/ruby:2.5.0-stretch-node-browsers
+         environment:
+           PGHOST: 127.0.0.1
+           PGUSER: dima
+           RAILS_ENV: test
+       - image: circleci/postgres:10.3-alpine-ram
+         environment:
+          POSTGRES_USER: dima
+          POSTGRES_DB: bookstore_test
+
+          deployment:
+            staging:
+              branch: master
+              codedeploy:
+                bookstore-rg:
+                  deployment_group: bookstore-rg-deployment
+
+    working_directory: ~/ruby_garage/homeworks/Bookstore/bookstore
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: Install System Dependencies
+          command: |
+            sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+
+      - run:
+          name: Install Other Dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+        
+      - run: 
+          name: Create Database
+          command: |
+            bundle exec rails db:create
+
+      - run: 
+          name: Load Database Schema
+          command: |
+            bundle exec rails db:schema:load --trace
+
+      - type: shell
+        command: |
+          xvfb-run -a bundle exec rspec --profile 10 \
+                                        --format RspecJunitFormatter \
+                                        --out test_results/rspec.xml \
+                                        --format progress \
+                                        $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - store_test_results:
+          path: test_results
