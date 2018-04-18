@@ -12,6 +12,10 @@ gem 'mini_racer', platforms: :ruby
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'jquery-rails'
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+gem 'omniauth-facebook', '~> 5.0'
+gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'country_select'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
@@ -25,6 +29,11 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+  end
+  gem 'rspec_junit_formatter', '~> 0.3.0'
+  gem 'factory_bot'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -33,4 +42,12 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'capybara', '~> 3.0', '>= 3.0.2'
+  gem 'capybara-webkit', '~> 1.15'
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'ffaker', '~> 2.9'
 end
