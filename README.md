@@ -1,7 +1,8 @@
 # Bookstore
 
-![VersionEye](https://img.shields.io/versioneye/d/ruby/rails.svg)
-![BuiltWithLove](https://img.shields.io/badge/built%20with-love-orange.svg)
+[![CircleCI](https://circleci.com/gh/Dimetriu/Bookstore-econnerce.svg?style=svg)](https://circleci.com/gh/Dimetriu/Bookstore-econnerce)
+[![VersionEye](https://img.shields.io/versioneye/d/ruby/rails.svg)](https://github.com/Dimetriu/bookstore-rg/network/dependencies)
+[![BuiltWithLove](https://img.shields.io/badge/built%20with-love-orange.svg)](https://github.com/Dimetriu/bookstore-rg)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
