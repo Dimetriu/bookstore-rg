@@ -4,8 +4,7 @@ RSpec.describe HomeController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+      expect(get: root_url(subdomain: nil)).to route_to(controller: "home", action: "index")
     end
   end
 
