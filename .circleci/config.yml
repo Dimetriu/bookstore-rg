@@ -11,6 +11,7 @@ jobs:
          environment:
           POSTGRES_USER: dima
           POSTGRES_DB: bookstore_test
+          devise[:secret_key]: Rails.application.creadentials.devise[:secret]
 
           deployment:
             staging:
