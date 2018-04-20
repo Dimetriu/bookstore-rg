@@ -1,11 +1,16 @@
-%h2 Change your password
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  = f.input :reset_password_token, as: :hidden
-  = f.full_error :reset_password_token
-  .form-inputs
-    = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-    = f.input :password_confirmation, label: "Confirm your new password", required: true
-  .form-actions
-    = f.button :submit, "Change my password"
-= render "users/shared/links"
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title= t('authentication.set_new_password')
+  %form.general-form
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = f.error_notification
+      = f.input :reset_password_token, as: :hidden
+      = f.full_error :reset_password_token
+    .form-group.mb-30
+      %label.control-label.input-label{for: "password"} Type a new Password
+      = f.label :password, class: 'control-label input-label'
+      = f.input_field :password, required: true, placeholder: "#{t('simple_form.labels.user.edit.password')}", autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), id: 'password', class: 'form-control'
+    .form-group.mb-40
+      = f.label :password_confirmation, class: 'control-label input-label'
+      = f.input_field :password_confirmation, label: "#{t('authentication.confirm_password')}", required: true, placeholder: "#{t('authentication.confirm_password')}", id: 'confirmPassword', class: 'form-control control-label input-label'
+      = f.button :submit, "#{t('authentication.change')}", class: 'btn btn-default center-block mb-20'

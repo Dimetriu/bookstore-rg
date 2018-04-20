@@ -12,7 +12,9 @@ en:
     or: or
     email: Enter Email
     password: Password
+    set_new_password: Set new password
     confirm_password: Confirm Password
+    change: Change
     forgot_password?: Forgot password?
     forgot_your_password?: Forgot your password?
     dont_have_an_account?: Don’t have an Account?
