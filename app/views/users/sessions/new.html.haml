@@ -1,26 +1,25 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title= t(:login)
+    %h3.general-login-title= t('authentication.login')
     = link_to root_path, class: 'general-login-icon' do
       %i.fa.fa-facebook-official
-    %p.general-login-text= t(:or)
+    %p.general-login-text= t('authentication.or')
   .general-form
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group.mb-30
-        = f.input :email, required: false, autofocus: true, placeholder: "#{t(:email)}", id: 'email', class: 'form-control control-label input-label'
+        = f.input :email, label: "#{t('authentication.email')}", required: false, autofocus: true, placeholder: "#{t(:email)}", id: 'email', class: 'form-control control-label input-label'
       .form-group.mb-30
-        = f.input :password, required: false, placeholder: "#{t(:password)}", id: 'password', class: 'form-control control-label input-label'
-        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-          = link_to "#{t(:forgot_your_password?)}", new_password_path(resource_name), class: 'help-block in-gold-500'
-      - if devise_mapping.rememberable?
+        = f.input :password, required: false, placeholder: "#{t('authentication.password')}", id: 'password', class: 'form-control control-label input-label'
+        = link_to "#{t('authentication.forgot_password?')}", new_password_path(resource_name), class: 'help-block in-gold-500'
+      .form-group.mb-30
         .form-group.checkbox.text-center.mb-30
           %label.checkbox-label
             %input.checkbox-input{type: "checkbox", hidden: "true"}
             %span.checkbox-icon
               %i.fa.fa-check
-            %span.checkbox-text= t(:remember_me)
-        .form-group.text-center.mb-20
-          = f.button :submit, "#{t(:login)}", class: 'btn btn-default'
+            %span.checkbox-text= t('authentication.remember_me')
+        .form-group.text-center.mb-30
+          = f.button :submit, "#{t('authentication.login')}", class: 'btn btn-default'
       %p.general-sign-text.text-center
-        = t(:dont_have_an_account?)
-        = link_to t(:signup), new_registration_path(resource_name), class: 'in-gold-500' if devise_mapping.registerable? && controller_name != 'registrations'
+        = t('authentication.dont_have_an_account?')
+        = link_to t('authentication.signup'), new_registration_path(resource_name), class: 'in-gold-500'

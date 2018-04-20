@@ -1,10 +1,21 @@
-%h2 Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-    = f.input :password_confirmation, required: true
-  .form-actions
-    = f.button :submit, "Sign up"
-= render "users/shared/links"
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title= t('authentication.signup')
+    = link_to root_path, class: 'general-login-icon' do
+      %i.fa.fa-facebook-official
+    %p.general-login-text= t('authentication.or')
+  .general-form
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .form-group.mb-30
+        = f.error_notification
+      .form-group.mb-30
+        = f.input :email, label: "#{t('authentication.email')}", required: false, autofocus: true, placeholder: "#{t('authentication.email')}", id: 'email', class: 'form-control control-label input-label'
+      .form-group.mb-30
+        = f.input :password, required: false, placeholder: "#{t('authentication.password')}", id: 'password', class: 'form-control control-label input-label', hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+      .form-group.mb-30
+        = f.input :password_confirmation, label: "#{t('authentication.confirm_password')}", required: false, placeholder: "#{t('authentication.confirm_password')}", id: 'password', class: 'form-control control-label input-label'
+      .form-group.text-center.mb-30
+        = f.button :submit, "#{t('authentication.signup')}", class: 'btn btn-default'
+      %p.general-sign-text.text-center
+        = t('authentication.have_an_account?')
+        = link_to t('authentication.login'), new_session_path(resource_name), class: 'in-gold-500'

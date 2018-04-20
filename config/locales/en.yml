@@ -30,17 +30,21 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  home: Home
-  shop: Shop
-  my_account: My account
-  orders: Orders
-  settings: Settings
-  logout: Log out
-  login: Log in
-  or: or
-  email: email
-  password: password
-  forgot_your_password?: Forgot your password?
-  dont_have_an_account?: Don’t have an Account?
-  remember_me: Remember me
-  signup: Sign up
+  application_layout:
+    home: Home
+    shop: Shop
+    my_account: My account
+    orders: Orders
+    settings: Settings
+  authentication:
+    logout: Log out
+    login: Log in
+    or: or
+    email: Enter Email
+    password: Password
+    confirm_password: Confirm Password
+    forgot_password?: Forgot password?
+    dont_have_an_account?: Don’t have an Account?
+    have_an_account?: Have an Account?
+    remember_me: Remember me
+    signup: Sign up
