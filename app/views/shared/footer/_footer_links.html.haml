@@ -1,0 +1,14 @@
+- if user_signed_in?
+  %li
+    = link_to t(:home), root_url, { class: 'nav-link' }
+  %li
+    = link_to t(:shop), root_url, { class: 'nav-link' }
+  %li
+    = link_to t(:orders), root_url, { class: 'nav-link' }
+  %li
+    = link_to t(:settings), root_url, { class: 'nav-link' }
+- else
+  %li
+    = link_to t(:home), root_url, { class: 'nav-link' }
+  %li
+    = link_to t(:shop), root_url, { class: 'nav-link' }
