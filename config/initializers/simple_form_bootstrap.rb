@@ -15,7 +15,7 @@ Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Default class for buttons
-  config.button_class = 'btn btn-default'
+  config.button_class = 'btn btn-default mb-30'
 
   # Define the default class of the input wrapper of the boolean input.
   config.boolean_label_class = 'checkbox-label'
@@ -160,11 +160,11 @@ SimpleForm.setup do |config|
   config.wrappers :horizontal_boolean, tag: 'div', class: 'checkbox text-center mb-30', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.wrapper tag: 'label', class: 'col-sm-3' do |ba|
+    b.wrapper tag: 'label', class: 'col-sm-3 checkbox-label' do |ba|
       ba.use :label_text
     end
     b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |wr|
-      wr.wrapper :form_check_wrapper, tag: 'div', class: 'form-check' do |bb|
+      wr.wrapper :form_check_wrapper, tag: 'span', class: 'checkbox-icon' do |bb|
         bb.use :input, class: 'checkbox-input', error_class: 'is-invalid', valid_class: 'is-valid'
         bb.use :label, class: 'checkbox-label'
         bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
@@ -414,16 +414,16 @@ SimpleForm.setup do |config|
 
   # Custom wrappers for input types. This should be a hash containing an input
   # type as key and the wrapper that will be used for all inputs with specified type.
-  config.wrapper_mappings = {
-    boolean:       :vertical_boolean,
-    check_boxes:   :vertical_collection,
-    date:          :vertical_multi_select,
-    datetime:      :vertical_multi_select,
-    file:          :vertical_file,
-    radio_buttons: :vertical_collection,
-    range:         :vertical_range,
-    time:          :vertical_multi_select
-  }
+  # config.wrapper_mappings = {
+  #   boolean:       :vertical_boolean,
+  #   check_boxes:   :vertical_collection,
+  #   date:          :vertical_multi_select,
+  #   datetime:      :vertical_multi_select,
+  #   file:          :vertical_file,
+  #   radio_buttons: :vertical_collection,
+  #   range:         :vertical_range,
+  #   time:          :vertical_multi_select
+  # }
 
   # enable custom form wrappers
   # config.wrapper_mappings = {

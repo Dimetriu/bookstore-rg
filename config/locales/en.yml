@@ -10,8 +10,6 @@ en:
     logout: Log out
     login: Log in
     or: or
-    email: Enter Email
-    password: Password
     set_new_password: Set new password
     confirm_password: Confirm Password
     change: Change
@@ -19,7 +17,6 @@ en:
     forgot_your_password?: Forgot your password?
     dont_have_an_account?: Don’t have an Account?
     have_an_account?: Have an Account?
-    remember_me: Remember me
     signup: Sign up
     email_instructions_label: We'll email you instructions on how to reset it
     enter_your_email: Enter your email
