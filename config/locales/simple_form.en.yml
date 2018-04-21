@@ -22,6 +22,16 @@ en:
           password: Type a new Password
         confirm: 
           password: Confirm Password
+    placeholders: 
+      user:
+        edit:
+          password: Type a new Password
+        confirm: 
+          password: Confirm Password
+    helpers:
+      submit:
+        user:
+          change: Change
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'
