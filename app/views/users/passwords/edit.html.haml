@@ -6,10 +6,10 @@
       = f.error_notification
       = f.input :reset_password_token, as: :hidden
       = f.full_error :reset_password_token
-      .form-group.mb-30
+      .mb-30
         = f.label t('simple_form.labels.user.edit.password'), class: 'control-label input-label'
         = f.input_field :password, required: true, placeholder: "#{t('simple_form.placeholders.user.edit.password')}", autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), id: 'password', class: 'form-control'
-      .form-group.mb-40
+      .mb-40
         = f.label t('simple_form.labels.user.confirm.password'), class: 'control-label input-label'
         = f.input_field :password_confirmation, required: true, placeholder: "#{t('simple_form.placeholders.user.confirm.password')}", id: 'confirmPassword', class: 'form-control'
-      = f.button :submit, "#{t('simple_form.helpers.submit.user.change')}", class: 'btn btn-default center-block mb-20'
+      = f.button :submit, "#{t('simple_form.helpers.submit.user.change')}", class: 'center-block'

@@ -9,6 +9,7 @@
     = link_to "#{t('authentication.forgot_password?')}", new_password_path(resource_name), class: 'help-block in-gold-500 general-form'
     .checkbox.text-center.mb-30
       %label.checkbox-label
+        %input.checkbox-input{type: "checkbox", hidden: "true", value: :remember_me}
         %span.checkbox-icon
           %i.fa.fa-check
         %span.checkbox-text= t('simple_form.helpers.span.user.remember_me')

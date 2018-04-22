@@ -26,6 +26,8 @@ en:
       defaults:
         password: Password
       user:
+        new:
+          email: Enter your email
         edit:
           password: Type a new Password
         confirm: 
@@ -33,6 +35,8 @@ en:
     helpers:
       submit:
         user:
+          new:
+            email_instructions: Email Instructions
           change: Change
           login: Log in
       span:
