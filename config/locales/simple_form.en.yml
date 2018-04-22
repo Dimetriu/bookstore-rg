@@ -22,7 +22,9 @@ en:
           password: Type a new Password
         confirm: 
           password: Confirm Password
-    placeholders: 
+    placeholders:
+      defaults:
+        password: Password
       user:
         edit:
           password: Type a new Password

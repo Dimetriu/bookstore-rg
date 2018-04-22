@@ -52,13 +52,14 @@ SimpleForm.setup do |config|
   config.wrappers :vertical_form, tag: 'div', class: 'general-form', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
+    b.optional :hidden
     b.optional :maxlength
     b.optional :minlength
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
     b.use :label, class: 'control-label input-label'
-    b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
+    b.use :input, class: 'form-control mb-30', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
@@ -67,7 +68,7 @@ SimpleForm.setup do |config|
   config.wrappers :vertical_boolean, tag: 'fieldset', class: 'checkbox text-center', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.wrapper :form_check_wrapper, tag: 'div', class: 'checkbox text-center' do |bb|
+    b.wrapper :form_check_wrapper, tag: 'div', class: 'checkbox text-center mb-30' do |bb|
       bb.use :input, class: 'checkbox-input', error_class: 'is-invalid', valid_class: 'is-valid'
       bb.use :label, class: 'checkbox-label'
       bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
