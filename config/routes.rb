@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'home#index'
   
   scope '(:locale)' do
-    devise_for :admins
+    devise_for :admins, controllers: { sessions: 'sessions' }
     devise_for :users
   end
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '(:loacle)/dashboard', as: 'rails_admin'
 end
