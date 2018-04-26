@@ -23,11 +23,10 @@
   %li
     = link_to root_url do
       %span.shop-icon
-        -# %span.shop-quantity
+        %span.shop-quantity 3
 - if admin_signed_in?
   %li.dropdown
-    = link_to rails_admin.dashboard_url, class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' do
-      = fa_icon "cogs", class: 'cogs f085'
+    = link_to t('nav.header.admin'), rails_admin.dashboard_url, class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'
     %ul.dropdown-menu
       %li
         = link_to t('nav.header.dashboard'), rails_admin.dashboard_url

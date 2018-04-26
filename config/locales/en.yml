@@ -1,7 +1,8 @@
 en:
   nav:
     header:
-      dashboard: Admin
+      dashboard: Dashboard
+      admin: Admin
   cancel: Cancel
   application_layout:
     home: Home
