@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/:locale' => 'home#index'
+  get ':/locale', to: 'home#index'
   root 'home#index'
   
   scope '(:locale)' do

@@ -9,7 +9,10 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_admin)
 
   ## == Cancan ==
-  config.authorize_with :cancancan_ext
+  config.authorize_with :cancancan_ext, AdminAbility
+
+  # Inherits RailsAdmin from an ApplicationController
+  # config.parent_controller = 'ApplicationController'
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -21,7 +24,7 @@ RailsAdmin.config do |config|
 
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
-  config.show_gravatar = true
+  # config.show_gravatar = true
 
   config.actions do
     dashboard                     # mandatory
