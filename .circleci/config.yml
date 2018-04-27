@@ -11,6 +11,9 @@ jobs:
          environment:
           POSTGRES_USER: dima
           POSTGRES_DB: bookstore_test
+          app_id: app_id
+          app_secret: app_secret
+          secret_key: secret_key
 
           deployment:
             staging:
