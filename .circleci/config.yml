@@ -11,16 +11,15 @@ jobs:
          environment:
           POSTGRES_USER: dima
           POSTGRES_DB: bookstore_test
-          app_id: app_id
-          app_secret: app_secret
-          secret_key: secret_key
+          # app_id: app_id
+          # app_secret: app_secret
 
-          deployment:
-            staging:
-              branch: master
-              codedeploy:
-                bookstore-rg:
-                  deployment_group: bookstore-rg-deployment
+          # deployment:
+          #   staging:
+          #     branch: master
+          #     codedeploy:
+          #       bookstore-rg:
+          #         deployment_group: bookstore-rg-deployment
 
     working_directory: ~/ruby_garage/homeworks/Bookstore/bookstore
 
@@ -47,10 +46,10 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
         
-      - run: 
-          name: Create Database
-          command: |
-            bundle exec rails db:create
+      # - run: 
+      #     name: Create Database
+      #     command: |
+      #       bundle exec rails db:create
 
       - run: 
           name: Load Database Schema
