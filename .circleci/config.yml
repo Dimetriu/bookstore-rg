@@ -46,19 +46,19 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
         
-      - run: 
-          name: Create Database
-          command: |
-            bundle exec rails db:create
-            environment: 
-              APP_ID: app_id
-              APP_SECRET: app_secret
-              SECRET_KEY: secret_key
+      # - run: 
+      #     name: Create Database
+      #     command: |
+      #       bundle exec rails db:create
+      #       environment: 
+      #         APP_ID: app_id
+      #         APP_SECRET: app_secret
+      #         SECRET_KEY: secret_key
 
-      - run: 
-          name: Load Database Schema
-          command: |
-            bundle exec rails db:schema:load --trace
+      # - run: 
+      #     name: Load Database Schema
+      #     command: |
+      #       bundle exec rails db:schema:load --trace
 
       - type: shell
         command: |
