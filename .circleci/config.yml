@@ -40,7 +40,6 @@ jobs:
       - run: 
           name: Create Database
           command: |
-            context: bookstore
             bundle exec rails db:create
 
       - run: 
@@ -57,3 +56,9 @@ jobs:
                                         $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - store_test_results:
           path: test_results
+workflows:
+  version: 2
+  bookstore-rg:
+    jobs:
+      - run-database:
+          context: bookstore
