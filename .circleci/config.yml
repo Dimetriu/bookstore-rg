@@ -61,6 +61,5 @@ workflows:
   version: 2
   bookstore-rg:
     jobs:
-      - run: 
-          name: Create Database
-            context: bookstore
+      - build
+        context: bookstore
