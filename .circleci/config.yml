@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-       - image: circleci/ruby:2.5.0-stretch-node-browsers
+       - image: circleci/ruby:2.5-stretch-node
          environment:
            PGHOST: 127.0.0.1
            PGUSER: dima
@@ -36,7 +36,7 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-        
+
       - run: 
           name: Create Database
           command: |
@@ -56,9 +56,11 @@ jobs:
                                         $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - store_test_results:
           path: test_results
+
 workflows:
   version: 2
   bookstore-rg:
     jobs:
-      - run-database:
-          context: bookstore
+      - run: 
+          name: Create Database
+            context: bookstore
