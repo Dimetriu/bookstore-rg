@@ -94,6 +94,8 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (8.3.0)
       execjs
+    avatar_magick (1.0.2)
+      dragonfly (~> 1.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootsnap (1.3.0)
@@ -139,6 +141,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    dragonfly (1.1.5)
+      addressable (~> 2.3)
+      multi_json (~> 1.0)
+      rack (>= 1.3)
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -355,6 +361,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  avatar_magick (~> 1.0, >= 1.0.2)
   bootsnap (>= 1.1.0)
   bootstrap-sass (~> 3.3, >= 3.3.7)
   byebug
@@ -365,6 +372,7 @@ DEPENDENCIES
   country_select (~> 3.1, >= 3.1.1)
   database_cleaner (~> 1.6, >= 1.6.2)
   devise (~> 4.4, >= 4.4.3)
+  dragonfly (~> 1.1, >= 1.1.5)
   factory_bot
   ffaker (~> 2.9)
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
