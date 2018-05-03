@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-
+  extend Dragonfly::Model
+  include Avatarable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -10,6 +11,10 @@ class User < ApplicationRecord
          :validatable,
          :confirmable,
          :omniauthable, omniauth_providers: %i[facebook]
+
+  def avatar_text
+    email.chr.capitalize
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
