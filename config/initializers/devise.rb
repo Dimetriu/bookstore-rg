@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = '795564ba76b7aaed07b3e07029ac681122c76d4c0f77d72cc288dacf0337af0b1c5556932d3c136d4fd24f6a5d578b54671d1ae753538b76fb3c7d94b3c34998'
+  config.secret_key = Rails.application.credentials.devise[:secret_key]
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -257,6 +257,22 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :facebook, 
+    Rails.application.credentials.facebook[:app_id],
+    Rails.application.credentials.facebook[:app_secret],
+    scope: 'public_profile, email',
+    info_fields: 'email,
+                  first_name,
+                  last_name,
+                  gender,
+                  birthday,
+                  location,
+                  picture',
+    client_options: {
+      site: 'https://graph.facebook.com/v2.12',
+      authorize_url: "https://www.facebook.com/v2.12/dialog/oauth?"
+      # ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' }
+    }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
