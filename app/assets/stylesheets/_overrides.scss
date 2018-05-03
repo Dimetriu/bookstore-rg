@@ -10,6 +10,32 @@ body {
   min-height: 100%;
 }
 
+// @keyframes alert-open {
+//   from {
+//     margin-top: -50px;
+//     position: absolute;
+//     left: 25%;
+//     right: 25%;
+//   }
+//   to {
+//     margin-top: 0;
+//     position: absolute;
+//     left: 25%;
+//     right: 25%;
+//     z-index: 1;
+//   }
+// }
+
+// .alert-notice {
+//   margin: auto;
+//   left: 25%;
+//   right: 25%;
+//   position: absolute;
+//   animation: alert-open 0.5s;
+//   background-color: $grey-900;
+//   color: $grey-100;
+// }
+
 .content {
   padding-bottom: 90px;
 }
