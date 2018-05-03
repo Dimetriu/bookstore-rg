@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.0'
+ruby '2.5.1'
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -15,8 +15,13 @@ gem 'jquery-rails'
 gem 'omniauth', '~> 1.8', '>= 1.8.1'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
-gem 'country_select', '~> 3.1', '>= 3.1.1'
+gem 'dragonfly', '~> 1.1', '>= 1.1.5'
+gem 'avatar_magick', '~> 1.0', '>= 1.0.2'
 gem 'rails_admin', '~> 1.3'
+gem 'cancancan', '~> 2.2'
+gem 'simple_form', '~> 4.0'
+gem 'country_select', '~> 3.1', '>= 3.1.1'
+gem 'haml-rails', '~> 1.0'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'

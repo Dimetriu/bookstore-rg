@@ -13,7 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-
+require 'rails_helper'
 Dir[File.join(File.dirname(__FILE__) + '/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|

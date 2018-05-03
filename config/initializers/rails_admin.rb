@@ -3,13 +3,16 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :admin
+  end
+  config.current_user_method(&:current_admin)
 
   ## == Cancan ==
-  # config.authorize_with :cancan
+  config.authorize_with :cancancan_ext, AdminAbility
+
+  # Inherits RailsAdmin from an ApplicationController
+  # config.parent_controller = 'ApplicationController'
 
   ## == Pundit ==
   # config.authorize_with :pundit

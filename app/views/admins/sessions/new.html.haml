@@ -1,0 +1,11 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title= t('authentication.login')
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .mb-30
+      = f.input :email, required: false, autofocus: true, placeholder: "#{t('simple_form.labels.user.new.email')}", id: 'email'
+    .mb-30
+      = f.input :password, required: false, placeholder: "#{t('simple_form.labels.defaults.password')}", id: 'password'
+    .text-center
+      = f.button :submit, "#{t('simple_form.helpers.submit.user.login')}"
+      %p.general-sign-text.text-center

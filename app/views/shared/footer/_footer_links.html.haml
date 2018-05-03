@@ -1,0 +1,14 @@
+- if user_signed_in?
+  %li
+    = link_to t('application_layout.home'), root_url, { class: 'nav-link' }
+  %li
+    = link_to t('application_layout.shop'), root_url, { class: 'nav-link' }
+  %li
+    = link_to t('application_layout.orders'), root_url, { class: 'nav-link' }
+  %li
+    = link_to t('application_layout.settings'), root_url, { class: 'nav-link' }
+- else
+  %li
+    = link_to t('application_layout.home'), root_url, { class: 'nav-link' }
+  %li
+    = link_to t('application_layout.shop'), root_url, { class: 'nav-link' }
