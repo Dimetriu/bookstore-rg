@@ -9,8 +9,9 @@
       = link_to t('application_layout.my_account'), root_url, { class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' }
       %ul.dropdown-menu
         %li.dropdown-header
-          = image_tag(current_user.image, class: 'col-pic avatar-circle')
+          = image_tag(current_user.image, class: 'col-pic img-circle')
           = current_user.first_name
+          = current_user.last_name
         %li
           = link_to t('application_layout.orders'), root_url
         %li
