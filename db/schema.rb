@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2018_05_05_170701) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -68,6 +67,8 @@ ActiveRecord::Schema.define(version: 2018_05_05_170701) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["first_name"], name: "index_billing_addresses_on_first_name", unique: true
+    t.index ["last_name"], name: "index_billing_addresses_on_last_name", unique: true
     t.index ["user_id"], name: "index_billing_addresses_on_user_id"
   end
 
@@ -82,6 +83,8 @@ ActiveRecord::Schema.define(version: 2018_05_05_170701) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["first_name"], name: "index_shipping_addresses_on_first_name", unique: true
+    t.index ["last_name"], name: "index_shipping_addresses_on_last_name", unique: true
     t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
   end
 
