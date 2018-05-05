@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
-  enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
-
   def change
-    create_table :admins, id: :uuid, default: 'gen_random_uuid()' do |t|
+    create_table :admins do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
