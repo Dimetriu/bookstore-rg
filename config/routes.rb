@@ -24,8 +24,12 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
     }
 
+    # resource :user, only: [:edit] do
+    #   patch 'update_password', on: :collection
+    # end
+
     get 'settings', action: :index, controller: 'settings'
-  # get 'settings/privacy', action: :privacy, controller: 'settings'
+    patch 'update_password', action: :update_password, controller: 'settings'
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

@@ -26,10 +26,11 @@ en:
     enter_your_email: "Enter your email"
     email_instructions_button: "Email Instructions"
   settings:
-    address:
+    index:
       title: Settings
       address: Address
       privacy: Privacy
+      email: Email
   activerecord:
     errors:
       messages:
