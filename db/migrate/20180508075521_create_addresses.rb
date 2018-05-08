@@ -1,8 +1,9 @@
-class CreateBillingAddresses < ActiveRecord::Migration[5.2]
+class CreateAddresses < ActiveRecord::Migration[5.2]
   disable_ddl_transaction!
 
   def change
-    create_table :billing_addresses do |t|
+    create_table :addresses do |t|
+      t.belongs_to :user, foreign_key: true, index: { algorithm: :concurrently }
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.string :address, null: false
@@ -10,12 +11,8 @@ class CreateBillingAddresses < ActiveRecord::Migration[5.2]
       t.string :zip, null: false
       t.string :country, null: false
       t.string :phone, null: false
-      t.references :user, foreign_key: true
 
       t.timestamps
     end
-
-    add_index :billing_addresses, :first_name, unique: true, algorithm: :concurrently
-    add_index :billing_addresses, :last_name, unique: true, algorithm: :concurrently
   end
 end

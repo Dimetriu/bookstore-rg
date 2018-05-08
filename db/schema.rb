@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_05_170701) do
+ActiveRecord::Schema.define(version: 2018_05_08_075521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 2018_05_05_170701) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "address", null: false
+    t.string "city", null: false
+    t.string "zip", null: false
+    t.string "country", null: false
+    t.string "phone", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -54,38 +68,6 @@ ActiveRecord::Schema.define(version: 2018_05_05_170701) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
-  end
-
-  create_table "billing_addresses", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "address", null: false
-    t.string "city", null: false
-    t.string "zip", null: false
-    t.string "country", null: false
-    t.string "phone", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["first_name"], name: "index_billing_addresses_on_first_name", unique: true
-    t.index ["last_name"], name: "index_billing_addresses_on_last_name", unique: true
-    t.index ["user_id"], name: "index_billing_addresses_on_user_id"
-  end
-
-  create_table "shipping_addresses", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "address", null: false
-    t.string "city", null: false
-    t.string "zip", null: false
-    t.string "country", null: false
-    t.string "phone", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["first_name"], name: "index_shipping_addresses_on_first_name", unique: true
-    t.index ["last_name"], name: "index_shipping_addresses_on_last_name", unique: true
-    t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -115,6 +97,5 @@ ActiveRecord::Schema.define(version: 2018_05_05_170701) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "billing_addresses", "users"
-  add_foreign_key "shipping_addresses", "users"
+  add_foreign_key "addresses", "users"
 end

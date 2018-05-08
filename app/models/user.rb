@@ -2,8 +2,8 @@ class User < ApplicationRecord
   extend Dragonfly::Model
   include Avatarable
 
-  has_one :billing_address, inverse_of: :user, dependent: :destroy
-  has_one :shipping_address, inverse_of: :user, dependent: :destroy
+  has_one :billing_address, class_name: 'Address', dependent: :destroy
+  has_one :shipping_address, class_name: 'Address', dependent: :destroy
 
 
   # Include default devise modules. Others available are:
