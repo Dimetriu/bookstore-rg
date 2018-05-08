@@ -24,8 +24,8 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
     }
 
-    get 'settings/address', action: :address, controller: 'settings'
-    get 'settings/privacy', action: :privacy, controller: 'settings'
+    get 'settings', action: :index, controller: 'settings'
+  # get 'settings/privacy', action: :privacy, controller: 'settings'
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

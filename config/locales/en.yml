@@ -25,6 +25,11 @@ en:
     email_instructions_label: "We'll email you instructions on how to reset it"
     enter_your_email: "Enter your email"
     email_instructions_button: "Email Instructions"
+  settings:
+    address:
+      title: Settings
+      address: Address
+      privacy: Privacy
   activerecord:
     errors:
       messages:

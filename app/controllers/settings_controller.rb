@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
-  def address
+  def index
   end
 
-  def privacy
-  end
+  # def privacy
+  # end
 end
