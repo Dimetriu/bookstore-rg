@@ -1,0 +1,21 @@
+%main.container.general-main-wrap
+  .text-center
+    = render 'users/shared/form_text'
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), class: 'general-form') do |f|
+    .mb-30
+      = f.input :email, required: false, autofocus: true, placeholder: "#{t('simple_form.labels.user.new.email')}", id: 'email'
+    .mb-30
+      = f.input :password, required: false, placeholder: "#{t('simple_form.labels.defaults.password')}", id: 'password'
+    = link_to "#{t('authentication.forgot_password?')}", new_password_path(resource_name), class: 'help-block in-gold-500 general-form'
+    .checkbox.text-center.mb-30
+      %label.checkbox-label
+        %input.checkbox-input{type: "checkbox", hidden: "true", value: :remember_me}
+        %span.checkbox-icon
+          %i.fa.fa-check
+        %span.checkbox-text= t('simple_form.helpers.span.user.remember_me')
+      -# = f.input_field :remember_me, as: :boolean
+    .text-center
+      = f.button :submit, "#{t('simple_form.helpers.submit.user.login')}"
+      %p.general-sign-text.text-center
+        = t('authentication.dont_have_an_account?')
+= link_to t('authentication.signup'), new_registration_path(resource_name), class: 'in-gold-500'

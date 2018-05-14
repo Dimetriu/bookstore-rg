@@ -24,11 +24,8 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
     }
 
-    # resource :user, only: [:edit] do
-    #   patch 'update_password', on: :collection
-    # end
-
     get 'settings', action: :index, controller: 'settings'
+    put 'update_email', action: :update_email, controller: 'settings'
     patch 'update_password', action: :update_password, controller: 'settings'
   end
 

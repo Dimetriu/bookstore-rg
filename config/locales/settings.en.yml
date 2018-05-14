@@ -1,0 +1,10 @@
+en:
+  settings:
+    index:
+      email: "Email"
+      simple_form:
+        labels:
+          email: "Enter Email"
+        helpers:
+          submit:
+            save: "Save"

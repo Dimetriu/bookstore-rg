@@ -10,5 +10,16 @@
       .row.mb-60
         .col-sm-5
           %p.in-gold-500.font-18.mb-25= t('.email')
-          = simple_form_for(@user, url: { action: 'update_password' }, class: 'general-form-md') do |f|
-            = f.input :password
+          = simple_form_for(@user, url: { action: 'update_email' }, class: 'general-form-md', html: { method: :put }) do |f|
+            .form-group.mb-35
+              = f.error_notification
+              = f.label t('.email'), class: 'control-label input-label'
+              = f.input :email, id: 'email', required: true, autofocus: true, class: 'form-control', label: false
+              = f.button :submit, t('.save'), class: 'mb-35'
+          -# = simple_form_for(@user, url: { action: 'update_password' }, class: 'general-form-md') do |f|
+          -#   .form-group.mb-35
+          -#     = f.error_notification
+          -#     = f.label t('.email'), class: 'control-label input-label'
+          -#     = f.input :email, id: 'email', class: 'form-control', label: false
+          -#     .general-text-align
+          -#       = f.button :submit, t('.save'), class: 'mb-35'

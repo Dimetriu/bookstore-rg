@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rspec/rspec-core.git
-  revision: 17485dea7830b4b8f52f414e043f5743766977a8
+  revision: 7b6b9c3f2e2878213f97d6fc9e9eb23c323cfe1c
   branch: master
   specs:
     rspec-core (3.8.pre)
@@ -219,7 +219,7 @@ GEM
     mini_racer (0.1.15)
       libv8 (~> 6.3)
     minitest (5.11.3)
-    money (6.11.1)
+    money (6.11.3)
       i18n (>= 0.6.4, < 1.1)
     msgpack (1.2.4)
     multi_json (1.13.1)
