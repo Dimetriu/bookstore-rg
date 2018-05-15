@@ -8,8 +8,7 @@ class SettingsController < ApplicationController
   end
 
   def update_email
-    if @user.update(user_params)
-      user.confirm
+    if @user.update_without_password(email_params)
       redirect_to settings_url
     else
       render :edit
@@ -31,7 +30,7 @@ class SettingsController < ApplicationController
       @user = current_user
     end
 
-    def user_params
-      params.require(:user).permit(:email, :password, :current_password, :password_confirmation)
+    def email_params
+      params.require(:user).permit(:email)
     end
 end

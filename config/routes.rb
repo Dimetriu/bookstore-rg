@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     }
 
     get 'settings', action: :index, controller: 'settings'
-    put 'update_email', action: :update_email, controller: 'settings'
+    patch 'update_email', action: :update_email, controller: 'settings'
     patch 'update_password', action: :update_password, controller: 'settings'
   end
 

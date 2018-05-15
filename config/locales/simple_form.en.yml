@@ -39,6 +39,9 @@ en:
             email_instructions: "Email Instructions"
           change: "Change"
           login: "Log in"
+        settings:
+          update_email:
+            save: "Save"
       span:
         user:
           remember_me: "Remember me"
