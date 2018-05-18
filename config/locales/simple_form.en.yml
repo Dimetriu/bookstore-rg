@@ -14,6 +14,7 @@ en:
     labels:
       defaults:
         password: "Password"
+        email: "Enter Email"
       user:
         new:
           email: "Enter Email"
@@ -25,6 +26,7 @@ en:
     placeholders:
       defaults:
         password: "Password"
+        email: "Enter your email"
       user:
         new:
           email: "Enter your email"

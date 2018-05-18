@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # get 'users/index'
+  # get 'users/edit'
+  # get 'users/update_email'
+  # get 'users/update_password'
   get ':/locale', to: 'home#index'
   root 'home#index'
 
@@ -24,9 +28,13 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
     }
 
-    get 'settings', action: :index, controller: 'settings'
-    patch 'update_email', action: :update_email, controller: 'settings'
-    patch 'update_password', action: :update_password, controller: 'settings'
+    scope 'account' do
+      resource :user, path: 'settings', only: :edit do
+        # get :index
+        patch :update_email
+        patch :update_password
+      end
+    end
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

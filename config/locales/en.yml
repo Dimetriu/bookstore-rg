@@ -31,6 +31,10 @@ en:
       address: Address
       privacy: Privacy
       email: Email
+  controllers:
+    settings:
+      update_email:
+        success: "Email was successfully updated, we have sent a confirmation to a new one"
   activerecord:
     errors:
       messages:
