@@ -30,7 +30,6 @@ Rails.application.routes.draw do
 
     scope 'account' do
       resource :user, path: 'settings', only: :edit do
-        # get :index
         patch :update_email
         patch :update_password
       end

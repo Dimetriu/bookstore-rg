@@ -13,19 +13,25 @@ class UsersController < ApplicationController
   private
 
     def update_attribute(name)
-      if current_user.update(attribute_params(name))
-        redirect_to users_url, notice: "Yay"
+      update_user =
+        case name
+        when :email
+          current_user.update_without_password(email_params)
+        when :password
+          current_user.update_with_password(password_params)
+        end
+      if update_user
+        redirect_to edit_user_url, notice: t("#{name}")
       else
-        render :index
+        render :edit
       end
     end
 
-    def attribute_params(attribute_name)
-      case attribute_name
-      when :email
-        params.require(:user).permit(:email)
-      when :password
-        params.require(:user).permit(:password, :current_password, :password_confirmation)
-      end
+    def email_params
+      params.require(:user).permit(:email)
+    end
+
+    def password_params
+      params.require(:user).permit(:password, :current_password, :password_confirmation)
     end
 end
