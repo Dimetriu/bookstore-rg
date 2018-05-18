@@ -10,26 +10,10 @@
       .row.mb-60
         .col-sm-5
           %p.in-gold-500.font-18.mb-25= t('.email')
-          = simple_form_for(current_user, url: update_email_user_url(current_user), html: { method: :patch }, wrapper: :email_form) do |f|
-            .form-group.mb-35
-              = f.label :email, t('.enter_email'), class: 'control-label input-label'
-              = f.input :email, required: true, autofocus: true, label: false, placeholder: t('.enter_your_email'), id: 'email'
-            .general-text-align
-              = f.button :button, t('save'), class: 'mb-35'
+          = render 'email_form'
         .col-sm-5.col-sm-offset-1
           %p.in-gold-500.font-18.mb-25= t('.password')
-          = simple_form_for(current_user, url: update_password_user_url(current_user), html: { method: :patch }, wrapper: :password_form) do |f|
-            .form-group.mb-30
-              = f.label :current_password, t('.old_password'), class: 'control-label input-label'
-              = f.input :current_password, id: 'oldPassword', label: false, placeholder: t('.old_password')
-            .form-group.mb-30
-              = f.label :password, t('.new_password'), class: 'control-label input-label'
-              = f.input :password, id: 'password', label: false, placeholder: t('.new_password')
-            .form-group.mb-40
-              = f.label :password_confirmation, t('.confirm_password'), class: 'control-label input-label'
-              = f.input :password_confirmation, id: 'confirmPassword', label: false, placeholder: t('.confirm_password')
-            .general-text-align
-              = f.button :button, t('save')
+          = render 'password_form'
       .divider-lg-bottom
         .col-sm-12
           %p.in-gold-500.font-18.mb-25 Remove Account
