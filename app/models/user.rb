@@ -2,6 +2,8 @@ class User < ApplicationRecord
   extend Dragonfly::Model
   include Avatarable
 
+  enum account_status: [:removed, :kept]
+
   has_one :billing_address, class_name: 'Address', dependent: :destroy
   has_one :shipping_address, class_name: 'Address', dependent: :destroy
 
@@ -28,7 +30,7 @@ class User < ApplicationRecord
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.image = auth.info.image
-      # user.skip_confirmation!
+      user.skip_confirmation!
     end
   end
 
