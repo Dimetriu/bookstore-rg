@@ -1,5 +1,0 @@
-en:
-  update_email:
-    success: "Email has been successfully updated, we`ve send a confirmation instructions on new email"
-  update_password:
-    success: "Password has been successfully updated"

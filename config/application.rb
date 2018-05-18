@@ -23,7 +23,8 @@ module Bookstore
     config.load_defaults 5.2
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-    
+    config.i18n.default_locale = :en
+
     Dir[Rails.root.join('lib/**/*.rb')].each { |f| require f }
 
     # Settings in config/environments/* take precedence over those specified here.
