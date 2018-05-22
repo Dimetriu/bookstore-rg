@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  def edit; end
+  def show; end
 
   def update_email
     update_attribute(:email)
@@ -8,6 +8,16 @@ class UsersController < ApplicationController
   def update_password
     update_attribute(:password)
     bypass_sign_in(current_user)
+  end
+
+  def destroy
+    if params[:remove_account]
+      current_user.destroy!
+      redirect_to root_url, notice: t('.success')
+    else
+      flash.now[:error] = t('.error')
+      render :show
+    end
   end
 
   private
@@ -21,9 +31,9 @@ class UsersController < ApplicationController
           current_user.update_with_password(password_params)
         end
       if update_user
-        redirect_to edit_user_url, notice: t("#{name}")
+        redirect_to user_url, notice: t(".#{name}")
       else
-        render :edit
+        render :show
       end
     end
 
@@ -33,5 +43,9 @@ class UsersController < ApplicationController
 
     def password_params
       params.require(:user).permit(:password, :current_password, :password_confirmation)
+    end
+
+    def remove_account_params
+      params.require(user).permit(:remove_account)
     end
 end

@@ -6,14 +6,13 @@
       = f.input :email, required: false, autofocus: true, placeholder: t('simple_form.labels.user.new.email'), id: 'email'
     .form-group.mb-30
       = f.input :password, required: false, placeholder: t('simple_form.labels.defaults.password'), id: 'password'
-    = link_to t('authentication.forgot_password?'), new_password_path(resource_name), class: 'help-block in-gold-500 general-form'
-    .checkbox.text-center.mb-30
+      = link_to t('authentication.forgot_password?'), new_password_path(resource_name), class: 'help-block in-gold-500 general-form'
+    .form-group.checkbox.text-center.mb-30
       %label.checkbox-label
-        %input.checkbox-input{type: "checkbox", hidden: "true", value: :remember_me}
+        %input.checkbox-input{type: "checkbox", hidden: "true", name: "remember_me"}
         %span.checkbox-icon
           %i.fa.fa-check
-        %span.checkbox-text= t('simple_form.helpers.span.user.remember_me')
-      -# = f.input_field :remember_me, as: :boolean
+        %span.checkbox-text= t('.remember_me')
     .text-center
       = f.button :submit, t('simple_form.helpers.submit.user.login'), class: 'mb-20'
   %p.general-sign-text.text-center

@@ -1,1 +1,7 @@
 en:
+  users:
+    show:
+      title: "Settings"
+      address: "Address"
+      privacy: "Privacy"
+      remove_account: "Remove Account"

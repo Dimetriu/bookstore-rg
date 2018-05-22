@@ -2,8 +2,6 @@ class User < ApplicationRecord
   extend Dragonfly::Model
   include Avatarable
 
-  enum account_status: [:removed, :kept]
-
   has_one :billing_address, class_name: 'Address', dependent: :destroy
   has_one :shipping_address, class_name: 'Address', dependent: :destroy
 
@@ -40,5 +38,9 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def account_can_be_removed?
+
   end
 end

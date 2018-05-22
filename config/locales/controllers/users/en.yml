@@ -1,0 +1,9 @@
+en:
+  users:
+    update_password:
+      password: "Password has been successfully updated."
+    update_email:
+      email: "Email has been successfully updated, we have sent a confirmation to a new one."
+    destroy:
+      success: "Account with all the personal data has been deleted."
+      error: "Account could not be deleted."

@@ -1,6 +1,6 @@
 = simple_form_for(current_user, url: update_email_user_url(current_user), html: { method: :patch }, wrapper: :email_form) do |f|
   .form-group.mb-35
     = f.label :email, t('.enter_email'), class: 'control-label input-label'
-    = f.input :email, required: true, autofocus: true, label: false, placeholder: t('.enter_your_email'), id: 'email'
+    = f.input :email, required: true, autofocus: true, label: false, placeholder: t('simple_form.placeholders.defaults.email'), id: 'email'
   .general-text-align
-    = f.button :button, t('save'), class: 'mb-35'
+    = f.button :button, t('.save'), class: 'mb-35'

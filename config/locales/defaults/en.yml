@@ -31,10 +31,10 @@ en:
       address: Address
       privacy: Privacy
       email: Email
-  users:
-    edit:
-      email: "Email has been successfully updated, we have sent a confirmation to a new one"
-      password: "Password has been successfully updated"
+  # users:
+  #   edit:
+  #     email: "Email has been successfully updated, we have sent a confirmation to a new one"
+  #     password: "Password has been successfully updated"
   activerecord:
     errors:
       messages:

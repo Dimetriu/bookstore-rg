@@ -18,6 +18,7 @@ en:
       user:
         new:
           email: "Enter Email"
+          remember_me: "Remember me"
         edit:
           email: "Enter your email"
           password: "Type a new Password"
@@ -25,11 +26,12 @@ en:
           password: "Confirm Password"
     placeholders:
       defaults:
-        password: "Password"
         email: "Enter your email"
+        password: "Password"
+        old_password: "Old Password"
+        new_password: "New Password"
+        confirm_password: "Confirm Password"
       user:
-        new:
-          email: "Enter your email"
         edit:
           password: "Type a new Password"
         confirm:
@@ -41,12 +43,14 @@ en:
             email_instructions: "Email Instructions"
           change: "Change"
           login: "Log in"
+          remove_account: "Please Remove My Account"
         settings:
           update_email:
             save: "Save"
       span:
         user:
           remember_me: "Remember me"
+          confirm_removal: "I understand that all data will be lost"
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

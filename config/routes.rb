@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  # get 'users/index'
-  # get 'users/edit'
-  # get 'users/update_email'
-  # get 'users/update_password'
   get ':/locale', to: 'home#index'
   root 'home#index'
 
@@ -21,15 +16,10 @@ Rails.application.routes.draw do
     }, as: :avatar
 
     devise_for :admins
-    devise_for :users, skip: :omniauth_callbacks, controllers: {
-      confirmations: 'users/confirmations',
-      passwords: 'users/passwords',
-      registrations: 'users/registrations',
-      sessions: 'users/sessions'
-    }
+    devise_for :users, skip: :omniauth_callbacks
 
     scope 'account' do
-      resource :user, path: 'settings', only: :edit do
+      resource :user, path: 'settings', only: [:show, :destroy] do
         patch :update_email
         patch :update_password
       end
