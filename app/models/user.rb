@@ -2,9 +2,10 @@ class User < ApplicationRecord
   extend Dragonfly::Model
   include Avatarable
 
+  default_scope { where(deleted_at: nil) }
+
   has_one :billing_address, class_name: 'Address', dependent: :destroy
   has_one :shipping_address, class_name: 'Address', dependent: :destroy
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
