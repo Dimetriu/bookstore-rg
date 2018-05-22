@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     }, as: :avatar
 
     devise_for :admins
-    devise_for :users, skip: :omniauth_callbacks
+    devise_for :users, skip: :omniauth_callbacks, controllers: {
+      registrations: 'users/registrations'
+    }
 
     scope 'account' do
       resource :user, path: 'settings', only: [:show, :destroy] do

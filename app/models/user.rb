@@ -40,7 +40,15 @@ class User < ApplicationRecord
     end
   end
 
-  def account_can_be_removed?
+  def soft_delete
+    update_attributes(:deleted_at, Time.current)
+  end
 
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  def inactive_message
+    !deleted_at ? super : deleted_account
   end
 end
