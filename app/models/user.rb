@@ -41,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def soft_delete
-    update_attributes(:deleted_at, Time.current)
+    update_attributes(deleted_at: Time.current)
   end
 
   def active_for_authentication?
@@ -49,6 +49,6 @@ class User < ApplicationRecord
   end
 
   def inactive_message
-    !deleted_at ? super : deleted_account
+    !deleted_at ? super : :deleted_account
   end
 end

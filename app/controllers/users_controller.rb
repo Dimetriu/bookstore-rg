@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def destroy
     if params[:remove_account]
-      current_user.destroy!
+      current_user.soft_delete
       redirect_to root_url, notice: t('.success')
     else
       flash.now[:error] = t('.error')
