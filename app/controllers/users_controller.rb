@@ -23,13 +23,7 @@ class UsersController < ApplicationController
   private
 
     def update_attribute(name)
-      update_user =
-        case name
-        when :email
-          current_user.update_without_password(email_params)
-        when :password
-          current_user.update_with_password(password_params)
-        end
+      update_user = UsersServices::Update.call(name, current_user, email_params, password_params)
       if update_user
         redirect_to user_url, notice: t(".#{name}")
       else
