@@ -5,3 +5,5 @@ en:
       address: "Address"
       privacy: "Privacy"
       remove_account: "Remove Account"
+  confirm_removal: "I understand that all data will be lost"
+  destroy: "Please Remove My Account"

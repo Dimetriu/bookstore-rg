@@ -43,10 +43,10 @@ en:
             email_instructions: "Email Instructions"
           change: "Change"
           login: "Log in"
-          remove_account: "Please Remove My Account"
         settings:
           update_email:
             save: "Save"
+          remove_account: "Please Remove My Account"
       span:
         user:
           remember_me: "Remember me"

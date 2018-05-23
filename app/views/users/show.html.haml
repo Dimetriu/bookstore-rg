@@ -17,12 +17,4 @@
       .divider-lg-bottom
         .col-sm-12
           %p.in-gold-500.font-18.mb-25= t('.remove_account')
-          = simple_form_for(current_user, url: user_url(current_user), html: { method: :delete }) do |f|
-            .general-settings-btn
-              = f.button :submit, t('.remove_account'), class: 'btn mb-20'
-            .form-group.checkbox.general-settings-checkbox
-              %label.checkbox-label
-                %input.checkbox-input{type: "checkbox", hidden: "true", name: "remove_account"}
-                %span.checkbox-icon
-                  %i.fa.fa-check
-                %span.checkbox-text= t('simple_form.helpers.span.user.confirm_removal')
+          = render 'remove_account_form'

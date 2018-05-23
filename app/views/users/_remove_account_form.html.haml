@@ -1,0 +1,9 @@
+= simple_form_for(current_user, url: user_url(current_user), html: { method: :delete }) do |f|
+  .general-settings-btn
+    = f.button :submit, I18n.t('.destroy'), class: 'btn mb-20'
+  .form-group.checkbox.general-settings-checkbox
+    %label.checkbox-label
+      %input.checkbox-input{type: "checkbox", hidden: "true", name: "remove_account"}
+      %span.checkbox-icon
+        %i.fa.fa-check
+      %span.checkbox-text= I18n.t('.confirm_removal')
