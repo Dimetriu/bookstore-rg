@@ -3,6 +3,7 @@ en:
     show:
       title: "Settings"
       address: "Address"
+
       privacy: "Privacy"
       remove_account: "Remove Account"
   confirm_removal: "I understand that all data will be lost"

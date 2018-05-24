@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     bypass_sign_in(current_user)
   end
 
+  def create_address
+
+  end
+
   def destroy
     if params[:remove_account]
       current_user.soft_delete

@@ -6,6 +6,10 @@
     %li.tab-item{role: "presentation"}
       %a.tab-link{href: "#privacy", 'aria-controls': "privacy", role: "tab", 'data-toggle': "tab"}= t('.privacy')
   .tab-content
+    #address.tab-pane.fade.in.active{role: "tabpanel"}
+      .general-main-wrap
+        = simple_form_for(current_user, url: create_address_user_url(current_user), html: { method: :post}) do |f|
+          = f.input :email
     #privacy.tab-pane.fade{role: "tabpanel"}
       .row.mb-60
         .col-sm-5

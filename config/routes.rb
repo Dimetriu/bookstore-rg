@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     scope 'account' do
       resource :user, path: 'settings', only: [:show, :destroy] do
+        post :create_address
         patch :update_email
         patch :update_password
       end
