@@ -2,15 +2,16 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
   disable_ddl_transaction!
 
   def change
-    create_table :addresses do |t|
-      t.belongs_to :user, foreign_key: true, index: { algorithm: :concurrently }
-      t.string :first_name, null: false
-      t.string :last_name, null: false
-      t.string :address, null: false
-      t.string :city, null: false
-      t.string :zip, null: false
-      t.string :country, null: false
-      t.string :phone, null: false
+    enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
+    create_table :addresses, id: :uuid, default: 'gen_random_uuid()' do |t|
+      t.belongs_to :user, type: :uuid, foreign_key: true, index: { algorithm: :concurrently }
+      t.string :first_name
+      t.string :last_name
+      t.string :address
+      t.string :city
+      t.string :zip
+      t.string :country
+      t.string :phone
 
       t.timestamps
     end
