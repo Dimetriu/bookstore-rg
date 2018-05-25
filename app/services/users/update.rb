@@ -1,4 +1,4 @@
-module UsersServices
+module Users
   module Update
     def self.call(attribute, user, email_params, password_params)
       case attribute

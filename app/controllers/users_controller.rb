@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   private
 
     def update_attribute(name)
-      update_user = UsersServices::Update.call(name, current_user, email_params, password_params)
+      update_user = Users::Update.call(name, current_user, email_params, password_params)
       if update_user
         redirect_to user_url, notice: t(".#{name}")
       else
@@ -41,9 +41,5 @@ class UsersController < ApplicationController
 
     def password_params
       params.require(:user).permit(:password, :current_password, :password_confirmation)
-    end
-
-    def remove_account_params
-      params.require(user).permit(:remove_account)
     end
 end
