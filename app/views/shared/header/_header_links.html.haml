@@ -3,12 +3,10 @@
 %li.dropdown
   = link_to t('application_layout.shop'), root_url, { class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' }
   %ul.dropdown-menu
-    %li
-      %a.collapse-link{href: "#"} Mobile development
-    %li
-      %a.collapse-link{href: "#"} Photo
-    %li
-      %a.collapse-link{href: "#"} Web design
+    - Category.order(:name).find_each do |c|
+      %li
+        -# %a.collapse-link{href: "#"} Photo
+        = link_to c.name.capitalize, category_url(c), class: 'collapse-link'
   - if user_signed_in?
     %li.dropdown
       = link_to t('application_layout.my_account'), root_url, { class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' }

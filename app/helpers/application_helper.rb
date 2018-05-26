@@ -1,9 +1,7 @@
 module ApplicationHelper
-  # def categories
+  # def category
   #   Category.order(:name).find_each do |c|
-  #     %li
-  #       %a
-  #         = c.name.capitalize
+  #     c.name.capitalize
   #   end
   # end
 end
