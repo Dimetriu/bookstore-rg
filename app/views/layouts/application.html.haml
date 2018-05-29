@@ -11,6 +11,6 @@
   %body
     = render 'shared/notifications.html.haml'
     .wrapper
-      = render 'shared/header.html.haml'
+      = render 'shared/header.html.haml', locals: {categories: @categories}
       = yield
     = render 'shared/footer.html.haml'

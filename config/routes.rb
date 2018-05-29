@@ -15,6 +15,8 @@ Rails.application.routes.draw do
           background_color: params[:background] })
     }, as: :avatar
 
+    resources :categories, only: :show, param: :name
+
     devise_for :admins
     devise_for :users, skip: :omniauth_callbacks
 

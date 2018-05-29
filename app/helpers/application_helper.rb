@@ -1,7 +1,9 @@
 module ApplicationHelper
-  # def category
-  #   Category.order(:name).find_each do |c|
-  #     c.name.capitalize
-  #   end
-  # end
+  def categories
+    Category.order(:name)
+  end
+
+  def category
+    Category.find_by(name: params[:name])
+  end
 end
