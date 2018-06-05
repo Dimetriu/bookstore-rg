@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     devise_for :users, skip: :omniauth_callbacks
 
     scope 'account' do
-      resource :user, path: 'settings', only: [:show, :destroy] do
-        post :create_address
+      resources :users, path: 'settings', only: [:index, :destroy] do
+        resources :addresses, except: [:index, :show, :destroy]
         patch :update_email
         patch :update_password
       end

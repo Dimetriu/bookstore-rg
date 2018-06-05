@@ -4,8 +4,8 @@ class User < ApplicationRecord
 
   default_scope -> { where(deleted_at: nil) }
 
-  has_one :billing_address, class_name: 'Address', dependent: :destroy
-  has_one :shipping_address, class_name: 'Address', dependent: :destroy
+  has_one :billing_address, class_name: "Address", dependent: :destroy
+  has_one :shipping_address, class_name: "Address", dependent: :destroy
   has_one :welcome_discount, class_name: 'Discounts::WelcomeDiscount', dependent: :destroy
 
   devise :database_authenticatable,
@@ -26,11 +26,7 @@ class User < ApplicationRecord
   end
 
   def after_confirmation
-    ActiveRecord::Base.transaction do
-      create_billing_address(first_name: first_name, last_name: last_name)
-      create_shipping_address(first_name: first_name, last_name: last_name)
-      create_welcome_discount
-    end
+    create_welcome_discount
   end
 
   def self.from_omniauth(auth)

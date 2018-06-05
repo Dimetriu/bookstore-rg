@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  def show; end
+  def index; end
 
   def update_email
     update_attribute(:email)
@@ -10,17 +10,13 @@ class UsersController < ApplicationController
     bypass_sign_in(current_user)
   end
 
-  def create_address
-
-  end
-
   def destroy
     if params[:remove_account]
       current_user.soft_delete
       redirect_to root_url, notice: t('.success')
     else
       flash.now[:error] = t('.error')
-      render :show
+      render :index
     end
   end
 
@@ -31,8 +27,16 @@ class UsersController < ApplicationController
       if update_user
         redirect_to user_url, notice: t(".#{name}")
       else
-        render :show
+        render :index
       end
+    end
+
+    def params_for(name)
+      params.fetch(:"#{name}", {})
+      .permit(
+        :first_name, :last_name, :address,
+        :city, :zip, :country, :phone
+        )
     end
 
     def email_params
