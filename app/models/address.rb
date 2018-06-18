@@ -1,8 +1,11 @@
 class Address < ApplicationRecord
-  belongs_to :user
+
+  enum kind: [:undefined, :billing, :shipping, :delivery]
+
+  belongs_to :addressable, polymorphic: true
 
   validates :first_name, :last_name, :address,
-            :city, :zip, :coutry, :phone,
+            :city, :zip, :country, :phone,
   presence: true
 
   validates :first_name, :last_name, length: { in: 2..25 }

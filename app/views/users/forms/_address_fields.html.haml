@@ -1,0 +1,21 @@
+.form-group
+  = f.label :first_name, class: 'input-label control-label'
+  = f.input :first_name, id: 'firstName', label: false, placeholder: t('.first_name')
+.form-group
+  = f.label :last_name, class: 'input-label control-label'
+  = f.input :last_name, id: 'lastName', label: false, placeholder: t('.last_name')
+.form-group
+  = f.label :address, class: 'input-label control-label'
+  = f.input :address, id: 'address', label: false, placeholder: t('.address')
+.form-group
+  = f.label :city, class: 'input-label control-label'
+  = f.input :city, id: 'city', label: false, placeholder: t('.city')
+.form-group
+  = f.label :zip, class: 'input-label control-label'
+  = f.input :zip, id: 'zip', label: false, placeholder: t('.zip')
+.form-group
+  = f.label :country, class: 'input-label control-label'
+  = f.input :country, id: 'country', priority: ["United Kingdom"], label: false, placeholder: t('.country')
+.form-group.mb-60
+  = f.label :phone, class: 'input-label control-label'
+  = f.input :phone, id: 'phone', label: false, placeholder: t('.phone')

@@ -5,26 +5,19 @@
       %a.tab-link{href: "#address", 'aria-controls': "address", role: "tab", 'data-toggle': "tab"}= t('.address')
     %li.tab-item{role: "presentation"}
       %a.tab-link{href: "#privacy", 'aria-controls': "privacy", role: "tab", 'data-toggle': "tab"}= t('.privacy')
-    -# = link_to "Address", new_user_address_url(current_user), id: 'address', class: 'tab-pane fade in active'
   .tab-content
     #address.tab-pane.fade.in.active{role: "tabpanel"}
       .general-main-wrap
-
-        -# = simple_form_for(:billing_addresses, url: user_billing_address_url(current_user), html: { method: :post}) do |f|
-        -#   = f.input :first_name
-        -#   = f.button :submit
-        -# = simple_form_for(:shipping_address, url: user_shipping_address_url(current_user), html: { method: :post}) do |f|
-        -#   = f.input :first_name
-        -#   = f.button :submit
+        = render 'users/forms/address_form', locals: {address_form: @address_form}
     #privacy.tab-pane.fade{role: "tabpanel"}
       .row.mb-60
         .col-sm-5
           %p.in-gold-500.font-18.mb-25= t('.email')
-          = render 'email_form'
+          = render 'users/forms/email_form'
         .col-sm-5.col-sm-offset-1
           %p.in-gold-500.font-18.mb-25= t('.password')
-          = render 'password_form'
+          = render 'users/forms/password_form'
       .divider-lg-bottom
         .col-sm-12
           %p.in-gold-500.font-18.mb-25= t('.remove_account')
-          = render 'remove_account_form'
+          = render 'users/forms/remove_account_form'

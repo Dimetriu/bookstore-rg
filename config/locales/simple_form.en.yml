@@ -31,6 +31,13 @@ en:
         old_password: "Old Password"
         new_password: "New Password"
         confirm_password: "Confirm Password"
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
       user:
         edit:
           password: "Type a new Password"
@@ -43,7 +50,8 @@ en:
             email_instructions: "Email Instructions"
           change: "Change"
           login: "Log in"
-        settings:
+        users:
+          save: "Save"
           update_email:
             save: "Save"
           remove_account: "Please Remove My Account"

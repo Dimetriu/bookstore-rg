@@ -1,6 +1,19 @@
 en:
   users:
-    show:
+    forms:
+      address_form:
+        billing_address: "Billing Address"
+        shipping_address: "Shipping Address"
+        save: "Save"
+      address_fields:
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
+    index:
       title: "Settings"
       address: "Address"
 

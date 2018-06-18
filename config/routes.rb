@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
     scope 'account' do
       resources :users, path: 'settings', only: [:index, :destroy] do
-        resources :addresses, except: [:index, :show, :destroy]
+        # resources :addresses, only: [:index, :create, :update]
+        post :create_address
+        put :update_address
         patch :update_email
         patch :update_password
       end

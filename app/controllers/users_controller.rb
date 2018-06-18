@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
   def index; end
 
+  def create_address
+    @user = Address.new(address_params)
+    # if @address_form.save!
+    #   redirect_to user_url, notice: "Yay created"
+    # else
+    #   flash.now[:error] = "Not created"
+    #   render :index
+    # end
+  end
+
+  def update_address
+
+  end
+
   def update_email
     update_attribute(:email)
   end
@@ -31,13 +45,17 @@ class UsersController < ApplicationController
       end
     end
 
-    def params_for(name)
-      params.fetch(:"#{name}", {})
-      .permit(
-        :first_name, :last_name, :address,
-        :city, :zip, :country, :phone
-        )
+    def address_params
+      params.fetch(:billing_address, {})
     end
+
+    # def params_for(name)
+    #   params.fetch(:"#{name}", {})
+    #   .permit(
+    #     :first_name, :last_name, :address,
+    #     :city, :zip, :country, :phone
+    #     )
+    # end
 
     def email_params
       params.require(:user).permit(:email)

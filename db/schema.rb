@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_05_25_201703) do
   end
 
   create_table "addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id"
+    t.integer "kind", default: 0
     t.string "first_name"
     t.string "last_name"
     t.string "address"
@@ -46,9 +46,11 @@ ActiveRecord::Schema.define(version: 2018_05_25_201703) do
     t.string "zip"
     t.string "country"
     t.string "phone"
+    t.string "addressable_type"
+    t.integer "addressable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
   create_table "admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -116,6 +118,5 @@ ActiveRecord::Schema.define(version: 2018_05_25_201703) do
     t.index ["user_id"], name: "index_welcome_discounts_on_user_id"
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "welcome_discounts", "users"
 end

@@ -4,8 +4,7 @@ class User < ApplicationRecord
 
   default_scope -> { where(deleted_at: nil) }
 
-  has_one :billing_address, class_name: "Address", dependent: :destroy
-  has_one :shipping_address, class_name: "Address", dependent: :destroy
+  has_many :addresses, -> { where(kind: [:billing, :shipping]) }, as: :addressable
   has_one :welcome_discount, class_name: 'Discounts::WelcomeDiscount', dependent: :destroy
 
   devise :database_authenticatable,
