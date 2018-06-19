@@ -1,18 +1,7 @@
 class UsersController < ApplicationController
-  def show; end
 
-  def create_address
-    @user = Address.new(address_params)
-    # if @address_form.save!
-    #   redirect_to user_url, notice: "Yay created"
-    # else
-    #   flash.now[:error] = "Not created"
-    #   render :index
-    # end
-  end
-
-  def update_address
-
+  def show
+    # right_here
   end
 
   def update_email
