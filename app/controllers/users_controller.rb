@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def show
-    # right_here
+    @billing_address = current_user.addresses.billing.new
+    @shipping_address = current_user.addresses.shipping.new
   end
 
   def update_email
@@ -24,7 +25,6 @@ class UsersController < ApplicationController
   end
 
   private
-
     def update_attribute(name)
       update_user = Users::Update.call(name, current_user, email_params, password_params)
       if update_user
