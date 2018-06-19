@@ -1,7 +1,7 @@
 %main.container.general-main-wrap
   .text-center
     = render 'users/shared/form_text'
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'general-form') do |f|
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'general-form') do |f|
     -# = f.error_notification
     .form-group.mb-30
       = f.input :email, required: false, autofocus: true, placeholder: t('simple_form.labels.user.new.email'), id: 'email'

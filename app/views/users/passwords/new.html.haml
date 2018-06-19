@@ -2,7 +2,7 @@
   .text-center
     %h3.mb-25= t('authentication.forgot_your_password?')
     %p.general-password-text= t('authentication.email_instructions_label')
-    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'general-form') do |f|
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'general-form') do |f|
       = f.error_notification
       .form-group.mb-25
         = f.input :email, label: false, required: true, placeholder: t('simple_form.placeholders.user.new.email'), autofocus: true, id: 'email'

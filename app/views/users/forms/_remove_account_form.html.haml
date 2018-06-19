@@ -1,4 +1,4 @@
-= simple_form_for(current_user, url: user_url(current_user), html: { method: :delete }) do |f|
+= form_for(current_user, url: user_url(current_user), html: { method: :delete }) do |f|
   .general-settings-btn
     = f.button :submit, I18n.t('.destroy'), class: 'btn mb-20'
   .form-group.checkbox.general-settings-checkbox
