@@ -3,18 +3,20 @@
 %li.dropdown
   = link_to t('application_layout.shop'), root_url, { class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' }
   %ul.dropdown-menu
-
+    - categories.each do |category|
+      %li
+        = link_to category.name.capitalize, category_url(category.name), class: 'collapse-link'
   - if user_signed_in?
     %li.dropdown
       = link_to t('application_layout.my_account'), root_url, { class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' }
       %ul.dropdown-menu
         %li.dropdown-header
-          = user_avatar(current_user, class: 'col-pic img-circle')
+          = user_avatar(current_user, class: 'col-pic img-circle avatar_text')
           = username(current_user)
         %li
           = link_to t('application_layout.orders'), root_url
         %li
-          = link_to t('application_layout.settings'), root_url
+          = link_to t('application_layout.settings'), user_url(current_user)
         %li.divider{ role: 'separator' }
           %li
             = link_to t('application_layout.logout'), destroy_user_session_url

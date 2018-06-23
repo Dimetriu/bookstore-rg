@@ -23,8 +23,11 @@ module Bookstore
     config.load_defaults 5.2
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-    
+    config.i18n.default_locale = :en
+
     Dir[Rails.root.join('lib/**/*.rb')].each { |f| require f }
+
+    config.action_view.default_form_builder = SimpleForm::FormBuilder
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

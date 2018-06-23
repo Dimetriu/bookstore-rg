@@ -28,3 +28,5 @@
 
 # Ignore text editor settings
 /.vscode/
+localhost.crt
+localhost.key

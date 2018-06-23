@@ -1,0 +1,22 @@
+.form-group
+  = f.label :billing_first_name, t('.labels.first_name'), class: 'control-label input-label'
+  = f.input :billing_first_name, id: 'firstName', required: true, autofocus: true, label: false, placeholder: t('.placeholders.first_name'), error_html: { class: 'has-error' }
+.form-group
+  = f.label :billing_last_name, t('.labels.last_name'), class: 'control-label input-label'
+  = f.input :billing_last_name, id: 'lastName', required: true, autofocus: true, label: false, placeholder: t('.placeholders.last_name'), error_html: { class: 'has-error' }
+.form-group
+  = f.label :billing_address, t('.labels.address'), class: 'control-label input-label'
+  = f.input :billing_address, id: 'address', required: true, autofocus: true, label: false, placeholder: t('.placeholders.address'), error_html: { class: 'has-error' }
+.form-group
+  = f.label :billing_city, t('.labels.city'), class: 'control-label input-label'
+  = f.input :billing_city, id: 'city', required: true, autofocus: true, label: false, placeholder: t('.placeholders.city'), error_html: { class: 'has-error' }
+.form-group
+  = f.label :billing_zip, t('.labels.zip'), class: 'control-label input-label'
+  = f.input :billing_zip, id: 'zip', required: true, autofocus: true, label: false, placeholder: t('.placeholders.zip'), error_html: { class: 'has-error' }
+.form-group
+  = f.label :billing_country, t('.labels.country'), class: 'control-label input-label'
+  = f.input :billing_country, id: 'country', required: true, autofocus: true, label: false, placeholder: t('.placeholders.country'), error_html: { class: 'has-error' }
+.form-group
+  = f.label :billing_phone, t('.labels.phone'), class: 'control-label input-label'
+  = f.input :billing_phone, id: 'phone', required: true, autofocus: true, label: false, placeholder: t('.placeholders.phone'), error_html: { class: 'has-error' }
+

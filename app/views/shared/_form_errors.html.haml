@@ -1,0 +1,6 @@
+- content_for :form_errors do
+  .has-error= pluralize(object.errors.count, "error") if object.errors.any?
+
+  %ul
+    - object.errors.full_messages.each do |msg|
+      %li= msg

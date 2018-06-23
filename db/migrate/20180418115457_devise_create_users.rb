@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[5.2]
-  enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
-
   def change
-    create_table :users, id: :uuid, default: 'gen_random_uuid()' do |t|
+    # enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
+    create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

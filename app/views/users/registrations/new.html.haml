@@ -1,16 +1,16 @@
 %main.container.general-main-wrap
   .text-center
     = render 'users/shared/form_text'
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'general-form') do |f|
     -# = f.error_notification
-    .mb-30
-      = f.input :email, required: false, autofocus: true, placeholder: "#{t('simple_form.labels.user.new.email')}", id: 'email'
-    .mb-30
-      = f.input :password, required: false, placeholder: "#{t('simple_form.placeholders.defaults.password')}", id: 'password', class: 'form-control control-label input-label' #, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-    .mb-30
-      = f.input :password_confirmation, label: "#{t('authentication.confirm_password')}", required: false, placeholder: "#{t('simple_form.placeholders.user.confirm.password')}", id: 'confirmPassword'
+    .form-group.mb-30
+      = f.input :email, required: false, autofocus: true, placeholder: t('simple_form.labels.user.new.email'), id: 'email'
+    .form-group.mb-30
+      = f.input :password, required: false, placeholder: t('simple_form.placeholders.defaults.password'), id: 'password', class: 'form-control control-label input-label' #, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+    .form-group.mb-30
+      = f.input :password_confirmation, label: t('authentication.confirm_password'), required: false, placeholder: t('simple_form.placeholders.user.confirm.password'), id: 'confirmPassword'
     .form-group.text-center.mb-30
-      = f.button :submit, "#{t('authentication.signup')}"
-      %p.general-sign-text.text-center
-        = t('authentication.have_an_account?')
-        = link_to t('authentication.login'), new_session_path(resource_name), class: 'in-gold-500'
+      = f.button :submit, t('authentication.signup')
+  %p.general-sign-text.text-center
+    = t('authentication.have_an_account?')
+    = link_to t('authentication.signup'), new_session_path(resource_name), class: 'in-gold-500'

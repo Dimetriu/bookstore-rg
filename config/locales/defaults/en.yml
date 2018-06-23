@@ -1,0 +1,41 @@
+en:
+  nav:
+    header:
+      dashboard: "Dashboard"
+      admin: "Admin"
+  cancel: "Cancel"
+  application_layout:
+    home: "Home"
+    shop: "Shop"
+    my_account: "My account"
+    orders: "Orders"
+    settings: "Settings"
+  authentication:
+    logout: "Log out"
+    login: "Log in"
+    or: "or"
+    set_new_password: "Set new password"
+    confirm_password: "Confirm Password"
+    change: "Change"
+    forgot_password?: "Forgot password?"
+    forgot_your_password?: "Forgot your password?"
+    dont_have_an_account?: "Don’t have an Account?"
+    have_an_account?: "Have an Account?"
+    signup: "Sign up"
+    email_instructions_label: "We'll email you instructions on how to reset it"
+    enter_your_email: "Enter your email"
+    email_instructions_button: "Email Instructions"
+  settings:
+    index:
+      title: Settings
+      address: Address
+      privacy: Privacy
+      email: Email
+  # users:
+  #   edit:
+  #     email: "Email has been successfully updated, we have sent a confirmation to a new one"
+  #     password: "Password has been successfully updated"
+  activerecord:
+    errors:
+      messages:
+        phone_invalid: "phone number format is not allowed"
