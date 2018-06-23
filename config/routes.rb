@@ -15,20 +15,20 @@ Rails.application.routes.draw do
           background_color: params[:background] })
     }, as: :avatar
 
+    concern :addressable do
+      member do
+        resource :address, controller: "address", only: [:create, :update]
+      end
+    end
+
     resources :categories, only: :show, param: :name
 
     devise_for :admins
     devise_for :users, skip: :omniauth_callbacks
 
-    scope 'account' do
-      resources :users, path: 'settings', only: [:show, :destroy] do
-        member do
-          resource :address, controller: "address", only: [:create, :update]
-        end
-
-        patch :update_email
-        patch :update_password
-      end
+    resources :users, concerns: :addressable, only: [:show, :destroy] do
+      patch :update_email
+      patch :update_password
     end
   end
 

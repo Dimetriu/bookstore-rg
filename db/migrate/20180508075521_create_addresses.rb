@@ -1,6 +1,8 @@
 class CreateAddresses < ActiveRecord::Migration[5.2]
+  disable_ddl_transaction!
+
   def change
-    create_table :addresses, id: :uuid, default: 'gen_random_uuid()' do |t|
+    create_table :addresses do |t|
       t.integer :kind, default: 0
       t.string :first_name
       t.string :last_name
@@ -10,12 +12,10 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :country
       t.string :phone
 
-      t.string :addressable_type
-      t.integer :addressable_id, type: :uuid
+      t.string :addressable_type, index: { algorithm: :concurrently }
+      t.integer :addressable_id, index: { algorithm: :concurrently }
 
       t.timestamps
     end
-
-    add_index :addresses, [:addressable_type, :addressable_id]
   end
 end

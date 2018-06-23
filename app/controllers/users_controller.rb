@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @billing_address = current_user.addresses.billing.new
-    @shipping_address = current_user.addresses.shipping.new
+    @address_form = AddressForm.new(current_user)
   end
 
   def update_email

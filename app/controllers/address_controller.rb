@@ -1,41 +1,34 @@
 class AddressController < ApplicationController
   def create
-    @billing_address = current_user.addresses.billing.new(address_params)
-    @shipping_address = current_user.addresses.shipping.new(address_params)
-
-    if params[:save_billing]
-      @billing_address.save!
-      flash.now.notice = "Billing Address successfully saved!"
-    end
-
-    if params[:save_shipping]
-      @shipping_address.save!
-      flash.now.notice = "Shipping Address successfully saved!"
-    end
-
-    redirect_to user_url(current_user)
+    execute_action
   end
 
   def update
-    @billing_address = current_user.addresses.billing.first
-    @shipping_address = current_user.addresses.shipping.first
-
-    if params[:save_billing]
-      @billing_address.update!(address_params)
-      flash.now.notice = "Billing Address successfully saved!"
-    end
-
-    if params[:save_shipping]
-      @shipping_address.update!(address_params)
-      flash.now.notice = "Shipping Address successfully saved!"
-    end
-
-    redirect_to user_url(current_user)
+    execute_action
   end
 
   private
     def address_params
-      # permitted = %i[]
-      params.fetch(:address, {})
+      params.require(:address_form).permit(
+        :billing_first_name, :billing_last_name, :billing_address,
+        :billing_city, :billing_zip, :billing_country, :billing_phone,
+        :shipping_first_name, :shipping_last_name, :shipping_address,
+        :shipping_city, :shipping_zip, :shipping_country, :shipping_phone,
+        :addressable_type, :addressable_id
+        )
+    end
+
+    def execute_action
+      @address_form = AddressForm.new(current_user)
+
+      if params["save_billing"]
+        @address_form.save_billing_address(address_params)
+        redirect_to user_url(current_user) and return
+      end
+
+      if params["save_shipping"]
+        @address_form.save_shipping_address(address_params)
+        redirect_to user_url(current_user) and return
+      end
     end
 end

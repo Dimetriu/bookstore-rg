@@ -1,0 +1,21 @@
+= form_for(@address_form, url: address_url, wrapper: :settings_form) do |f|
+  -# = form_errors_for @address_form
+  .hidden-xs.hidden-sm
+    .row
+      .col-md-5
+        %h3.general-subtitle.mt-0= t('.billing_address')
+      .col-md-5.col-md-offset-1
+        %h3.general-subtitle.mt-0= t('.shipping Address')
+  .row
+    .col-md-5.mb-40
+      .visible-xs.visible-sm
+        %h3.general-subtitle.mt-0= t('.billing_address')
+      = render 'address/billing_fields', f: f
+      .text-center.general-text-align
+        = f.button :button, t('.helpers.save'), name: :save_billing, class: 'btn'
+    .col-md-5.col-md-offset-1.mb-25
+      .visible-xs.visible-sm
+        %h3.general-subtitle.mt-0= t('.shipping Address')
+      = render 'address/shipping_fields', f: f
+      .text-center.general-text-align
+        = f.button :button, t('.helpers.save'), name: :save_shipping, class: 'btn'

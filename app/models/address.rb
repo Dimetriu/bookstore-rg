@@ -4,11 +4,9 @@ class Address < ApplicationRecord
 
   belongs_to :addressable, polymorphic: true
 
-  validates :first_name, :last_name, :address,
-            :city, :zip, :country, :phone,
-  presence: true
-
-  validates :first_name, :last_name, length: { in: 2..25 }
-  validates :zip, length: { in: 3..25 }
-  validates :phone, phone: true
+  validates :first_name, :last_name, :address, presence: true, length: { in: 2..50 }
+  validates :city, presence: true
+  validates :zip, presence: true, length: { in: 2..25 }
+  validates :country, presence: true
+  validates :phone, presence: true, phone: true
 end

@@ -12,5 +12,6 @@
     = render 'shared/notifications.html.haml'
     .wrapper
       = render 'shared/header.html.haml', locals: {categories: @categories}
+      = yield :form_errors
       = yield
     = render 'shared/footer.html.haml'
