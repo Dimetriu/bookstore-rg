@@ -15,7 +15,7 @@ Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Default class for buttons
-  config.button_class = 'btn btn-default mb-30'
+  config.button_class = 'btn btn-default'
 
   # Define the default class of the input wrapper of the boolean input.
   config.boolean_label_class = 'checkbox-label'
@@ -34,7 +34,7 @@ SimpleForm.setup do |config|
   config.include_default_input_wrapper_class = false
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'alert alert-danger'
+  config.error_notification_class = 'has-error'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -42,14 +42,14 @@ SimpleForm.setup do |config|
   config.error_method = :to_sentence
 
   # add validation classes to `input_field`
-  config.input_field_error_class = 'is-invalid'
+  config.input_field_error_class = 'has-error'
   config.input_field_valid_class = 'is-valid'
 
 
   # vertical forms
   #
   # vertical default_wrapper
-  config.wrappers :vertical_form, tag: 'div', class: 'general-form', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  config.wrappers :vertical_form, tag: 'div', class: 'general-form', error_class: 'has-error', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :hidden
@@ -59,9 +59,25 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
     b.use :label, class: 'control-label input-label'
-    b.use :input, class: 'form-control mb-30', error_class: 'is-invalid', valid_class: 'is-valid'
+    b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+  end
+
+  # vertical form for settings email
+  config.wrappers :settings_form, tag: 'div', class: 'general-form-md', error_class: 'has-error', valid_class: 'form-group-valid' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :hidden
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: 'control-label input-label'
+    b.use :input, class: 'form-control', error_class: 'has-error', valid_class: 'is-valid', wrapper_html: 'form-group'
+    b.use :full_error, wrap_with: { tag: 'div', class: 'has-error' }
+    b.use :hint, wrap_with: { tag: 'span', class: 'help-block' }
   end
 
   # vertical input for boolean
@@ -69,10 +85,10 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
     b.wrapper :form_check_wrapper, tag: 'div', class: 'checkbox text-center mb-30' do |bb|
-      bb.use :input, class: 'checkbox-input', error_class: 'is-invalid', valid_class: 'is-valid'
+      bb.use :input, class: 'checkbox-input', error_class: 'has-error', valid_class: 'is-valid'
       bb.use :label, class: 'checkbox-label'
-      bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
-      bb.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+      bb.use :full_error, wrap_with: { tag: 'div', class: 'has-error' }
+      bb.use :hint, wrap_with: { tag: 'span', class: 'help-block' }
     end
   end
 
@@ -141,7 +157,7 @@ SimpleForm.setup do |config|
   # horizontal forms
   #
   # horizontal default_wrapper
-  config.wrappers :horizontal_form, tag: 'div', class: 'general-form', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  config.wrappers :horizontal_form, tag: 'div', class: '', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -245,7 +261,7 @@ SimpleForm.setup do |config|
   # inline forms
   #
   # inline default_wrapper
-  config.wrappers :inline_form, tag: 'span', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  config.wrappers :inline_form, tag: 'span', error_class: 'has-error', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -256,8 +272,8 @@ SimpleForm.setup do |config|
     b.use :label, class: 'sr-only'
 
     b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
-    b.use :error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
-    b.optional :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+    b.use :error, wrap_with: { tag: 'div', class: 'has-error' }
+    b.optional :hint, wrap_with: { tag: 'span', class: 'help-block' }
   end
 
   # inline input for boolean

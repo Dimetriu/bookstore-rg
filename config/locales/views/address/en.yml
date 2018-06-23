@@ -1,0 +1,43 @@
+en:
+  address:
+    billing_address: "Billing Address"
+    shipping_address: "Shipping Address"
+    billing_fields:
+      labels:
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
+      placeholders:
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
+      helpers:
+        button: "Save"
+    shipping_fields:
+      labels:
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
+      placeholders:
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
+      helpers:
+        button: "Save"
+

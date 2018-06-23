@@ -1,0 +1,31 @@
+en:
+  users:
+    form:
+      labels:
+        defaults:
+          first_name: "First Name"
+          last_name: "Last Name"
+          address: "Address"
+          city: "City"
+          zip: "Zip"
+          country: "Country"
+          phone: "Phone"
+      placeholders:
+        defaults:
+          first_name: "First Name"
+          last_name: "Last Name"
+          address: "Address"
+          city: "City"
+          zip: "Zip"
+          country: "Country"
+          phone: "Phone"
+      helpers:
+        submit: "Save"
+    show:
+      title: "Settings"
+      address: "Address"
+
+      privacy: "Privacy"
+      remove_account: "Remove Account"
+  confirm_removal: "I understand that all data will be lost"
+  destroy: "Please Remove My Account"

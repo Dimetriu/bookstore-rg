@@ -15,13 +15,21 @@ Rails.application.routes.draw do
           background_color: params[:background] })
     }, as: :avatar
 
+    concern :addressable do
+      member do
+        resource :address, controller: "address", only: [:create, :update]
+      end
+    end
+
+    resources :categories, only: :show, param: :name
+
     devise_for :admins
-    devise_for :users, skip: :omniauth_callbacks, controllers: {
-      confirmations: 'users/confirmations',
-      passwords: 'users/passwords',
-      registrations: 'users/registrations',
-      sessions: 'users/sessions'
-    }
+    devise_for :users, skip: :omniauth_callbacks
+
+    resources :users, concerns: :addressable, only: [:show, :destroy] do
+      patch :update_email
+      patch :update_password
+    end
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

@@ -1,8 +1,12 @@
 class User < ApplicationRecord
   extend Dragonfly::Model
   include Avatarable
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  default_scope -> { where(deleted_at: nil) }
+
+  has_many :addresses, -> { where(kind: [:billing, :shipping]) }, as: :addressable
+  has_one :welcome_discount, class_name: 'Discounts::WelcomeDiscount', dependent: :destroy
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -16,6 +20,14 @@ class User < ApplicationRecord
     email.chr.capitalize
   end
 
+  def self.deleted
+    unscoped.where.not(deleted_at: nil)
+  end
+
+  def after_confirmation
+    create_welcome_discount
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -23,7 +35,7 @@ class User < ApplicationRecord
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.image = auth.info.image
-      # user.skip_confirmation!
+      user.confirm
     end
   end
 
@@ -33,5 +45,17 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def soft_delete
+    update_attributes(deleted_at: Time.current)
+  end
+
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  def inactive_message
+    !deleted_at ? super : :deleted_account
   end
 end

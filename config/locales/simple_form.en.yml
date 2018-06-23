@@ -13,35 +13,52 @@ en:
     # Examples
     labels:
       defaults:
-        password: Password
+        password: "Password"
+        email: "Enter Email"
       user:
         new:
-          email: Enter Email
+          email: "Enter Email"
+          remember_me: "Remember me"
         edit:
-          email: Enter your email
-          password: Type a new Password
-        confirm: 
-          password: Confirm Password
+          email: "Enter your email"
+          password: "Type a new Password"
+        confirm:
+          password: "Confirm Password"
     placeholders:
       defaults:
-        password: Password
+        email: "Enter your email"
+        password: "Password"
+        old_password: "Old Password"
+        new_password: "New Password"
+        confirm_password: "Confirm Password"
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
       user:
-        new:
-          email: Enter your email
         edit:
-          password: Type a new Password
-        confirm: 
-          password: Confirm Password
+          password: "Type a new Password"
+        confirm:
+          password: "Confirm Password"
     helpers:
       submit:
         user:
           new:
-            email_instructions: Email Instructions
-          change: Change
-          login: Log in
+            email_instructions: "Email Instructions"
+          change: "Change"
+          login: "Log in"
+        users:
+          save: "Save"
+          update_email:
+            save: "Save"
+          remove_account: "Please Remove My Account"
       span:
         user:
-          remember_me: Remember me
+          remember_me: "Remember me"
+          confirm_removal: "I understand that all data will be lost"
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'
