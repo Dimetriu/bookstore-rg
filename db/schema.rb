@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_23_102055) do
+ActiveRecord::Schema.define(version: 2018_06_28_203850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -112,6 +112,17 @@ ActiveRecord::Schema.define(version: 2018_06_23_102055) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.text "text_review"
+    t.integer "rating_number"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_id"], name: "index_ratings_on_rateable_id"
+    t.index ["rateable_type"], name: "index_ratings_on_rateable_type"
   end
 
   create_table "users", force: :cascade do |t|

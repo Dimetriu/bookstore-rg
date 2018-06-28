@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :addresses, -> { where(kind: [:billing, :shipping]) }, as: :addressable
   has_one :welcome_discount, class_name: 'Discounts::WelcomeDiscount', dependent: :destroy
+  has_many :ratings, as: :rateable
 
   devise :database_authenticatable,
          :registerable,
