@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_211358) do
+ActiveRecord::Schema.define(version: 2018_06_28_212054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -126,6 +126,15 @@ ActiveRecord::Schema.define(version: 2018_06_28_211358) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "quantity"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.decimal "total_price"
     t.datetime "completed_date"
@@ -186,6 +195,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_211358) do
   end
 
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "welcome_discounts", "users"
 end
