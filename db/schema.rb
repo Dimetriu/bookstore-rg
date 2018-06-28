@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_203850) do
+ActiveRecord::Schema.define(version: 2018_06_28_211358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -114,6 +114,28 @@ ActiveRecord::Schema.define(version: 2018_06_28_203850) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number"
+    t.datetime "expiration_month"
+    t.datetime "expiration_year"
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total_price"
+    t.datetime "completed_date"
+    t.string "state"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.text "text_review"
     t.integer "rating_number"
@@ -163,5 +185,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_203850) do
     t.index ["user_id"], name: "index_welcome_discounts_on_user_id"
   end
 
+  add_foreign_key "credit_cards", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "welcome_discounts", "users"
 end
