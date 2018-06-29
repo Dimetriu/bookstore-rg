@@ -14,7 +14,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
 
     create_table :books do |t|
       t.string :name
-      t.string :image
       t.text :description
       t.decimal :price
       t.integer :quantity

@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_212054) do
+ActiveRecord::Schema.define(version: 2018_06_29_213207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -93,7 +94,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_212054) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
-    t.string "image"
     t.text "description"
     t.decimal "price"
     t.integer "quantity"
@@ -124,6 +124,16 @@ ActiveRecord::Schema.define(version: 2018_06_28_212054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.uuid "url", default: -> { "gen_random_uuid()" }
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_id"], name: "index_images_on_imageable_id"
+    t.index ["imageable_type"], name: "index_images_on_imageable_type"
   end
 
   create_table "order_items", force: :cascade do |t|
