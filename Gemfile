@@ -24,6 +24,7 @@ gem 'country_select', '~> 3.1', '>= 3.1.1'
 gem 'haml-rails', '~> 1.0'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'aasm', '~> 4.12', '>= 4.12.3'
+gem "aws-sdk-s3", require: false
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
