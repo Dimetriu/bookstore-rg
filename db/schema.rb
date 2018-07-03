@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_29_213207) do
+ActiveRecord::Schema.define(version: 2018_07_03_114940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -126,16 +126,6 @@ ActiveRecord::Schema.define(version: 2018_06_29_213207) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.uuid "url", default: -> { "gen_random_uuid()" }
-    t.string "imageable_type"
-    t.integer "imageable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["imageable_id"], name: "index_images_on_imageable_id"
-    t.index ["imageable_type"], name: "index_images_on_imageable_type"
-  end
-
   create_table "order_items", force: :cascade do |t|
     t.decimal "price"
     t.integer "quantity"
@@ -153,6 +143,14 @@ ActiveRecord::Schema.define(version: 2018_06_29_213207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.uuid "url", default: -> { "gen_random_uuid()" }
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_pictures_on_book_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -207,5 +205,6 @@ ActiveRecord::Schema.define(version: 2018_06_29_213207) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "pictures", "books"
   add_foreign_key "welcome_discounts", "users"
 end
