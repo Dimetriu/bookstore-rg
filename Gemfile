@@ -25,6 +25,8 @@ gem 'haml-rails', '~> 1.0'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'aasm', '~> 4.12', '>= 4.12.3'
 gem "aws-sdk-s3", require: false
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'

@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_114940) do
+ActiveRecord::Schema.define(version: 2018_06_28_212054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -145,14 +144,6 @@ ActiveRecord::Schema.define(version: 2018_07_03_114940) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.uuid "url", default: -> { "gen_random_uuid()" }
-    t.bigint "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_pictures_on_book_id"
-  end
-
   create_table "ratings", force: :cascade do |t|
     t.text "text_review"
     t.integer "rating_number"
@@ -205,6 +196,5 @@ ActiveRecord::Schema.define(version: 2018_07_03_114940) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
-  add_foreign_key "pictures", "books"
   add_foreign_key "welcome_discounts", "users"
 end
