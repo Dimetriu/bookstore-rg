@@ -24,7 +24,7 @@ RailsAdmin.config do |config|
 
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar = true
+  config.show_gravatar = true
 
   config.actions do
     dashboard                     # mandatory
@@ -40,5 +40,19 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+  end
+
+  config.model 'Book' do
+    edit do
+      field :name
+      field :description
+      field :price
+      field :quantity
+      field :year_of_publication
+      field :dimensions
+      field :authors
+      field :materials
+      field :attachments, :carrierwave
+    end
   end
 end
