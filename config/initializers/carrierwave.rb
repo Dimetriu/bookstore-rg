@@ -7,5 +7,5 @@ CarrierWave.configure do |config|
     aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
   }
 
-  config.fog_directory = 'bookstore-development'
+  config.fog_directory = Rails.application.credentials.aws[:fog_directory]
 end
