@@ -4,4 +4,6 @@ class Book < ApplicationRecord
   has_many :ratings, as: :rateable
 
   mount_uploaders :attachments, ImageUploader
+
+  store_in_background :attachments
 end
