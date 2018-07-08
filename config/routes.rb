@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
           resources :categories, only: :show, param: :name
 
-          resource :catalog, controller: 'catalog', only: :index
+          resources :books, path: '/catalog', only: :index
 
           devise_for :admins
           devise_for :users, skip: :omniauth_callbacks
