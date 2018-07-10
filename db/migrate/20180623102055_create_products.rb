@@ -21,6 +21,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.hstore :dimensions
       t.string :authors, array: true, index: { using: 'gin' }
       t.string :materials, array: true, index: { using: 'gin' }
+      t.belongs_to :category, foreign_key: true, index: { algorithm: :concurrently }
 
       t.timestamps
     end

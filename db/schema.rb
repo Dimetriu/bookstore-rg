@@ -100,11 +100,13 @@ ActiveRecord::Schema.define(version: 2018_07_07_113747) do
     t.hstore "dimensions"
     t.string "authors", array: true
     t.string "materials", array: true
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "attachments"
     t.json "attachments_tmp"
     t.index ["authors"], name: "index_books_on_authors", using: :gin
+    t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["materials"], name: "index_books_on_materials", using: :gin
   end
 
@@ -195,6 +197,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_113747) do
     t.index ["user_id"], name: "index_welcome_discounts_on_user_id"
   end
 
+  add_foreign_key "books", "categories"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

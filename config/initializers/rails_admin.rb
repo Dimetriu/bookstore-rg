@@ -42,17 +42,6 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model 'Book' do
-    edit do
-      field :name
-      field :description
-      field :price
-      field :quantity
-      field :year_of_publication
-      field :dimensions
-      field :authors
-      field :materials
-      field :attachments, :carrierwave
-    end
-  end
+  config.included_models = %w[author book category order rating].map(&:capitalize)
+
 end
