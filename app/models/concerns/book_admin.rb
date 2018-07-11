@@ -3,6 +3,12 @@ module BookAdmin
 
   included do
     rails_admin do
+      list do
+        configure :attachments do
+          hide
+        end
+      end
+
       edit do
         field :name
         field :description
@@ -20,7 +26,9 @@ module BookAdmin
           end
         end
         field :materials
-        field :attachments, :carrierwave
+        field :attachments do
+          partial 'file_upload_field'
+        end
       end
     end
   end
