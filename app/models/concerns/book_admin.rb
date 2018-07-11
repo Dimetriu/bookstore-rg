@@ -10,6 +10,7 @@ module BookAdmin
       end
 
       edit do
+        field :category
         field :name
         field :description
         field :price
@@ -26,7 +27,7 @@ module BookAdmin
           end
         end
         field :materials
-        field :attachments do
+        field :images do
           partial 'file_upload_field'
         end
       end

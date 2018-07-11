@@ -1,6 +1,7 @@
 = form.file_field :images, multiple: true
 - if @object.images
-  - @object.images.each_with_index do |book, index|
-    = image_tag(book.url)
-    -# %a.btn.btn-info.btn-remove-image{"rel" => "noflow", "data-method" => "delete", "href" => "/book/#{@object.id}/images/#{index}"} Delete
-    = link_to('Delete', book_images_url(@object, index), method: :delete)
+  .row
+    - @object.images.each_with_index do |image, index|
+      .col-xs-6.col-md-3
+        .thumbnail
+          = image_tag(image.url)

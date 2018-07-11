@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_113747) do
+ActiveRecord::Schema.define(version: 2018_07_11_121933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(version: 2018_07_07_113747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "images", default: [], array: true
-    t.string "images_tmp", default: [], array: true
     t.index ["authors"], name: "index_books_on_authors", using: :gin
     t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["materials"], name: "index_books_on_materials", using: :gin
