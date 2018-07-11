@@ -9,9 +9,9 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    = render 'shared/notifications.html.haml'
+    = render 'notifications'
     .wrapper
       = render 'shared/header.html.haml', locals: {categories: @categories}
       = yield :form_errors
       = yield
-    = render 'shared/footer.html.haml'
+    = render 'footer'
