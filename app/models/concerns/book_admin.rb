@@ -16,7 +16,9 @@ module BookAdmin
         field :price
         field :quantity
         field :year_of_publication
-        field :dimensions
+        field :dimensions do
+          partial 'dimensions_field'
+        end
         field :author_ids, :enum do
           enum do
             Author.all.collect { |a| [a.full_name, a.id] }

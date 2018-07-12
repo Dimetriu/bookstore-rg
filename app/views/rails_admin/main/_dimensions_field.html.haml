@@ -1,0 +1,7 @@
+= form.fields_for :dimensions, BookDimensions.new(@object.dimensions) do |m|
+  = m.label :height
+  = m.text_field :height
+  = m.label :width
+  = m.text_field :width
+  = m.label :depth
+  = m.text_field :depth

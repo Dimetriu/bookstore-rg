@@ -7,8 +7,6 @@ class Book < ApplicationRecord
 
   attr_accessor :author_attributes
 
-  # attr_accessor :dimensions, :materials
-
   belongs_to :category
 
   has_many :authorships
