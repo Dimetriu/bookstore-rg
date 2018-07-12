@@ -1,0 +1,10 @@
+%ul.list-inline.pt-10.mb-25.mr-240
+  %li.mr-35
+    = link_to(books_url, class: 'filter-link') do
+      = t('.all')
+      %span.badge.general-badge= all_books_count
+  - categories.each do |category|
+    %li.mr-35
+      = link_to(category_url(category.name), class: 'filter-link') do
+        = category.name.capitalize
+        %span.badge.general-badge= category.books.count # add counter cache

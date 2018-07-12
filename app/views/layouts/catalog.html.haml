@@ -13,5 +13,7 @@
     .wrapper
       = render 'home_header'
       = yield :form_errors
-      = yield
+      %main.container
+        = render 'catalog_navigation'
+        = yield
     = render 'footer'

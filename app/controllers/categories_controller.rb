@@ -1,9 +1,6 @@
-class CategoriesController < ApplicationController
-  def index
-    # @categories = Category.order(:name)
-  end
+class CategoriesController < GenericController::BaseCatalogController
 
   def show
-    # @category = Category.find_by(name: params[:name])
+    @category = Category.find_by(name: params[:name])
   end
 end
