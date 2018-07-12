@@ -1,11 +1,13 @@
 class Book < ApplicationRecord
   include BookAdmin
 
+  serialize :dimensions, BookDimensions
+
   attr_accessor :images, :images_cache, :remove_images
 
   attr_accessor :author_attributes
 
-  attr_accessor :dimensions, :materials
+  # attr_accessor :dimensions, :materials
 
   belongs_to :category
 

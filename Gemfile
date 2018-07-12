@@ -26,7 +26,7 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'aasm', '~> 4.12', '>= 4.12.3'
 gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
-gem 'carrierwave_backgrounder', github: 'lardawge/carrierwave_backgrounder'
+gem 'virtus', github: 'solnic/virtus'
 gem 'sidekiq'
 
 gem 'coffee-rails', '~> 4.2'
