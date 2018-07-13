@@ -23,9 +23,10 @@ module BookAdmin
             true
           end
         end
-        field :materials do
-          partial 'materials_field'
-        end
+        field :materials, :string_array
+        # field :materials do
+        #   partial 'materials_field'
+        # end
         field :images do
           partial 'file_upload_field'
         end
