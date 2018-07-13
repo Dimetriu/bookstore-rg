@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  has_many :books
+  has_many :books, counter_cache: true, dependent: :destroy
 
   validates :name, presence: true, length: { in: 3..50 }, uniqueness: true
 
