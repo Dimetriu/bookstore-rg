@@ -1,7 +1,7 @@
-= form.fields_for :dimensions, BookDimensions.new(@object.dimensions) do |m|
-  = m.label :height, { class: 'col-sm-2 control-label' }
-  = m.text_field :height, { class: 'form-control form-group' }
-  = m.label :width, { class: 'col-sm-2 control-label' }
-  = m.text_field :width, { class: 'form-control form-group' }
-  = m.label :depth, { class: 'col-sm-2 control-label' }
-  = m.text_field :depth, { class: 'form-control form-group' }
+= form.fields_for :dimensions, BookDimensions.new(@object.dimensions) do |d|
+  = d.label :height, { class: 'col-sm-2 control-label' }
+  = d.text_field :height, { class: 'form-control form-group' }
+  = d.label :width, { class: 'col-sm-2 control-label' }
+  = d.text_field :width, { class: 'form-control form-group' }
+  = d.label :depth, { class: 'col-sm-2 control-label' }
+  = d.text_field :depth, { class: 'form-control form-group' }

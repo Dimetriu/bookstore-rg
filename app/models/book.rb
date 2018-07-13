@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   include BookAdmin
 
   serialize :dimensions, BookDimensions
-  attr_accessor :materials
+  store_accessor :materials
 
   attr_accessor :images, :images_cache, :remove_images
 
