@@ -24,12 +24,22 @@ module BookAdmin
           end
         end
         field :materials, :string_array
-        # field :materials do
-        #   partial 'materials_field'
-        # end
         field :images do
           partial 'file_upload_field'
         end
+      end
+
+      list do
+        field :images do
+          pretty_value do
+            css_class 'thumbnail'
+            bindings[:view].tag(:img, {src: bindings[:object].images.first.url})
+          end
+        end
+        field :name
+        field :category
+        field :price
+        field :quantity
       end
     end
   end
