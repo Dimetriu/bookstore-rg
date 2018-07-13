@@ -4,9 +4,9 @@ class Address < ApplicationRecord
 
   belongs_to :addressable, polymorphic: true
 
-  validates :first_name, :last_name, :address, presence: true, length: { in: 2..50 }
-  validates :city, presence: true
-  validates :zip, presence: true, length: { in: 2..25 }
-  validates :country, presence: true
-  validates :phone, presence: true, phone: true
+  validates :first_name, :last_name, :address, allow_blank: true, length: { in: 2..50 }
+  validates :city, allow_blank: true
+  validates :zip, allow_blank: true, length: { in: 2..25 }
+  validates :country, allow_blank: true
+  validates :phone, allow_blank: true, phone: true
 end
