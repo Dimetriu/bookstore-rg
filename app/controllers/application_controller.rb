@@ -20,4 +20,10 @@ class ApplicationController < ActionController::Base
   def locals(names)
     render locals: names
   end
+
+  # add presenters
+  def present(object, klass = nil)
+    klass ||= "#{object.class}".constantize
+    klass.new(object, view_context)
+  end
 end
