@@ -1,6 +1,6 @@
 class BooksController < GenericController::BaseCatalogController
   def index
-    @books = Book.all
+    locals books: Book.all
   end
 
   def show
