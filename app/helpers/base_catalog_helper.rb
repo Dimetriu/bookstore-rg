@@ -11,4 +11,8 @@ module BaseCatalogHelper
   def all_books_count
     Book.count
   end
+
+  def book_authors(book)
+    book.authors.collect { |a| "#{a.first_name} #{a.last_name}" }.join(', ')
+  end
 end
