@@ -29,6 +29,9 @@ gem 'fog-aws'
 gem 'virtus', github: 'solnic/virtus'
 gem 'sidekiq'
 
+# add the markdown support
+gem 'redcarpet', github: 'vmg/redcarpet'
+
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
