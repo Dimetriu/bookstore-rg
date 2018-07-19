@@ -2,3 +2,5 @@ en:
   books:
     show:
       back: "Back to results"
+      button: "Add to Cart"
+      description: "Description"

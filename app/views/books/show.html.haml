@@ -6,7 +6,7 @@
     .col-sm-6
       .product-gallery
         .mb-20
-          = presenter.cover_image
+          = presenter.cover_image(class: 'img-responsive')
         .images.clearfix
           - presenter.thumbnails.collect do |image|
             = presenter.linked_image(image, class: 'img-link')
@@ -25,7 +25,7 @@
             %a.input-link{href: "#"}
               %i.fa.fa-plus.line-height-40
         .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position Add to Cart
+          %button.btn.btn-default.pull-right.general-position= t('.button')
       .general-info-wrap.divider-lg
-        %p Description
+        %p= t('.description')
         %p.lead.small.line-height-2= presenter.description

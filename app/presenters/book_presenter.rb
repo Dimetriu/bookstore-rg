@@ -1,12 +1,7 @@
-class BookPresenter < ApplicationPresenter
-  presents :book
-  delegate :price,
-           :images,
-           :authors,
-    to: :book
+class BookPresenter < BaseCatalogPresenter
 
-  def cover_image
-    image_tag(book.images.first.url, class: 'img-responsive')
+  def cover_image(html_options)
+    image_tag(book.images.first.url, html_options)
   end
 
   def thumbnails
@@ -21,15 +16,7 @@ class BookPresenter < ApplicationPresenter
     book.name
   end
 
-  def authors
-    book.authors.collect { |a| "#{a.first_name} #{a.last_name}" }.join(', ')
-  end
-
   def description
     book.description
-  end
-
-  def price
-    h.number_to_currency(book.price, unit: '€', precision: 2)
   end
 end
