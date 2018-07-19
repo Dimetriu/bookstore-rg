@@ -1,4 +1,4 @@
-- present @book do |book|
+- present @book do |presenter|
   = link_to(:back, class: 'general-back-link') do
     %i.fa.fa-long-arrow-left.mr-15
     = t('.back')
@@ -6,17 +6,16 @@
     .col-sm-6
       .product-gallery
         .mb-20
-          = image_tag(@book.images.first.url, class: 'img-responsive')
+          = presenter.cover_image
         .images.clearfix
-          - @book.images[1..-1].collect do |img|
-            = link_to(@book_url, class: 'img-link') do
-              = image_tag(img.url)
+          - presenter.thumbnails.collect do |image|
+            = presenter.linked_image(image, class: 'img-link')
     .col-sm-6
-      %h1.mt-res-0= @book.name
-      %p.lead.small= book_authors(@book)
+      %h1.mt-res-0= presenter.name
+      %p.lead.small= presenter.authors
       .row
         .col-xs-12.col-md-4
-          %p.h1.in-gold-500.mt-10= book.price # formatted_price(@book.price)
+          %p.h1.in-gold-500.mt-10= presenter.price
         .col-xs-5.col-md-3
           .input-group.general-position
             %a.input-link{href: "#"}
@@ -29,4 +28,4 @@
           %button.btn.btn-default.pull-right.general-position Add to Cart
       .general-info-wrap.divider-lg
         %p Description
-        %p.lead.small.line-height-2= @book.description
+        %p.lead.small.line-height-2= presenter.description

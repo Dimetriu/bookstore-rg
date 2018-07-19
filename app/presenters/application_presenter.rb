@@ -13,7 +13,7 @@ class ApplicationPresenter
     end
 
     def markdown(text)
-      Recarpet::Markdown.new(
+      Redcarpet::Markdown.new(
         text,
         hard_wrap: true,
         filter_html: true,
