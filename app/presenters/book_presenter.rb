@@ -17,6 +17,6 @@ class BookPresenter < BaseCatalogPresenter
   end
 
   def description
-    book.description
+    markdown(book.description)
   end
 end

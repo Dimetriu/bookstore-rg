@@ -1,3 +1,4 @@
-= content_for :catalog_navigation
-- @category.books.each do |book|
-  = book.name
+-# - @category.books.each do |book|
+-#   = book.name
+- present @category do |presenter|
+  = presenter.name

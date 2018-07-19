@@ -1,11 +1,2 @@
 en:
-  application:
-    best_sellers:
-      h3_best_sellers: "Best Sellers"
-    catalog_navigation:
-      all: "All"
-      catalog: "Catalog"
-      newest: "Newest first"
-      popular: "Popular first"
-      price_lowest: "Price: Low to high"
-      price_highest: "Price: High to low"
+

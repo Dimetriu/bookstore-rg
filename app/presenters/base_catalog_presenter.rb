@@ -1,4 +1,5 @@
 class BaseCatalogPresenter < ApplicationPresenter
+  presents :category
   presents :book
 
   def thumbnail(html_options)

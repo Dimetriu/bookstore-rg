@@ -1,1 +1,31 @@
-= render 'book_partial'
+- present @book do |presenter|
+  = link_to(:back, class: 'general-back-link') do
+    %i.fa.fa-long-arrow-left.mr-15
+    = t('.back')
+  .row
+    .col-sm-6
+      .product-gallery
+        .mb-20
+          = presenter.cover_image(class: 'img-responsive')
+        .images.clearfix
+          - presenter.thumbnails.collect do |image|
+            = presenter.linked_image(image, class: 'img-link')
+    .col-sm-6
+      %h1.mt-res-0= presenter.name
+      %p.lead.small= presenter.authors
+      .row
+        .col-xs-12.col-md-4
+          %p.h1.in-gold-500.mt-10= presenter.price
+        .col-xs-5.col-md-3
+          .input-group.general-position
+            %a.input-link{href: "#"}
+              %i.fa.fa-minus.line-height-40
+            %input.quantity-input{type: "text"}
+            -# TODO: add cofeescript
+            %a.input-link{href: "#"}
+              %i.fa.fa-plus.line-height-40
+        .col-xs-7.col-md-5
+          %button.btn.btn-default.pull-right.general-position= t('.button')
+      .general-info-wrap.divider-lg
+        %p= t('.description')
+        %p.lead.small.line-height-2= presenter.description
