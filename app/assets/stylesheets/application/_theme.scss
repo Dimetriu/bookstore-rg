@@ -69,6 +69,7 @@
 .lead {
   color: $grey-600;
   word-break: break-word;
+  text-overflow: ellipsis;
 }
 
 .small {

@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-expectations.git
-  revision: 848fcb426cca1977b75909d0cb8a10f03a104b36
+  revision: a132fa41bdd588f9abe9444f6f1fb152f52e9531
   branch: master
   specs:
     rspec-expectations (3.8.pre)
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-mocks.git
-  revision: 7dc2a431101172d31b780458eb168e05d20fb3aa
+  revision: 5b09361a12f5abc8e89f6f16a14d854bda378ead
   branch: master
   specs:
     rspec-mocks (3.8.pre)
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-rails.git
-  revision: 8c6c9590b94916199950dc8a91a9741d3be30c7c
+  revision: 76fe087600e8925db1f5c35b6aa01ece6a461fa2
   branch: master
   specs:
     rspec-rails (3.8.pre)
@@ -44,6 +44,22 @@ GIT
   branch: master
   specs:
     rspec-support (3.8.pre)
+
+GIT
+  remote: https://github.com/solnic/virtus.git
+  revision: 4db9ffd380b5e42baa56b9f96b8daebf12fad48f
+  specs:
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
+
+GIT
+  remote: https://github.com/vmg/redcarpet.git
+  revision: 92a7b3ae2241b862e9bf45e0af3cf53ebdfb0afb
+  specs:
+    redcarpet (3.4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -94,10 +110,14 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
-    autoprefixer-rails (8.6.3)
+    autoprefixer-rails (8.6.5)
       execjs
     avatar_magick (1.0.2)
       dragonfly (~> 1.0)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.0)
@@ -108,7 +128,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.2.1)
+    capybara (3.3.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -118,6 +138,12 @@ GEM
     capybara-webkit (1.15.0)
       capybara (>= 2.3, < 4.0)
       json
+    carrierwave (1.2.3)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -126,6 +152,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     countries (2.1.4)
       i18n_data (~> 0.8.0)
       money (~> 6.9)
@@ -136,6 +163,8 @@ GEM
       sort_alphabetical (~> 1.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -147,8 +176,10 @@ GEM
       addressable (~> 2.3)
       multi_json (~> 1.0)
       rack (>= 1.3)
+    equalizer (0.0.11)
     erubi (1.7.1)
     erubis (2.7.0)
+    excon (0.62.0)
     execjs (2.7.0)
     factory_bot (4.10.0)
       activesupport (>= 3.0.0)
@@ -156,8 +187,25 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffaker (2.9.0)
     ffi (1.9.25)
+    fog-aws (3.0.0)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (2.1.0)
+      builder
+      excon (~> 0.58)
+      formatador (~> 0.2)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.3)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
+    formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -178,6 +226,8 @@ GEM
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
+    ice_nine (0.11.2)
+    ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -201,7 +251,7 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    libv8 (6.3.292.48.1)
+    libv8 (6.7.288.46.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -214,12 +264,13 @@ GEM
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
+    mime-types (2.99.3)
     mimemagic (0.3.2)
     mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    mini_racer (0.1.15)
-      libv8 (~> 6.3)
+    mini_racer (0.2.0)
+      libv8 (>= 6.3)
     minitest (5.11.3)
     money (6.11.3)
       i18n (>= 0.6.4, < 1.1)
@@ -229,7 +280,7 @@ GEM
     multipart-post (2.0.0)
     nested_form (0.3.2)
     nio4r (2.3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
@@ -253,6 +304,8 @@ GEM
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
+    rack-protection (2.0.3)
+      rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.2.0)
@@ -296,6 +349,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.1)
     remotipart (1.4.2)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -319,6 +373,11 @@ GEM
     sexp_processor (4.11.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
+    sidekiq (5.1.3)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -343,7 +402,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.12)
+    uglifier (4.1.14)
       execjs (>= 0.3.0, < 3)
     unicode_utils (1.4.0)
     warden (1.2.7)
@@ -371,6 +430,7 @@ DEPENDENCIES
   cancancan (~> 2.2)
   capybara (~> 3.0, >= 3.0.2)
   capybara-webkit (~> 1.15)
+  carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   country_select (~> 3.1, >= 3.1.1)
   database_cleaner (~> 1.6, >= 1.6.2)
@@ -378,6 +438,7 @@ DEPENDENCIES
   dragonfly (~> 1.1, >= 1.1.5)
   factory_bot
   ffaker (~> 2.9)
+  fog-aws
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
   haml-rails (~> 1.0)
   jbuilder (~> 2.5)
@@ -392,6 +453,8 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails_admin (~> 1.3)
+  redcarpet!
+  redis (~> 4.0)
   rspec-core!
   rspec-expectations!
   rspec-mocks!
@@ -400,10 +463,12 @@ DEPENDENCIES
   rspec_junit_formatter (~> 0.3.0)
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1, >= 3.1.2)
+  sidekiq
   simple_form (~> 4.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier (>= 1.3.0)
+  virtus!
   web-console (>= 3.3.0)
 
 RUBY VERSION

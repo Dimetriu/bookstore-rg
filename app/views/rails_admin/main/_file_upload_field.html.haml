@@ -1,0 +1,7 @@
+= form.file_field :images, multiple: true
+- if @object.images
+  .row
+    - @object.images.each_with_index do |image, index|
+      .col-xs-6.col-md-3
+        .thumbnail
+          = image_tag(image.url)

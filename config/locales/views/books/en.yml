@@ -1,0 +1,12 @@
+en:
+  books:
+    show:
+      back: "Back to results"
+      button: "Add to Cart"
+      description: "Description"
+      year_of_publication: "Year of publication"
+      dimensions: "Dimensions"
+      materials: "Materials"
+    reviews:
+      reviews: "Reviews"
+      write_a_review: "Write a Review"

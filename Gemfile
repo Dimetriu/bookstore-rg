@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', platforms: :ruby
-
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'jquery-rails'
@@ -24,10 +24,17 @@ gem 'country_select', '~> 3.1', '>= 3.1.1'
 gem 'haml-rails', '~> 1.0'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'aasm', '~> 4.12', '>= 4.12.3'
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
+gem 'virtus', github: 'solnic/virtus'
+gem 'sidekiq'
+
+# add the markdown support
+gem 'redcarpet', github: 'vmg/redcarpet'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'mini_magick', '~> 4.8'

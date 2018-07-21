@@ -1,5 +1,7 @@
 RailsAdmin.config do |config|
 
+  config.main_app_name = ['Bookstore', 'Rashydov']
+
   ### Popular gems integration
 
   ## == Devise ==
@@ -24,7 +26,7 @@ RailsAdmin.config do |config|
 
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar = true
+  config.show_gravatar = true
 
   config.actions do
     dashboard                     # mandatory
@@ -41,4 +43,7 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.included_models = %w[author book category order rating].map(&:capitalize)
+
 end

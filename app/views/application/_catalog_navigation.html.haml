@@ -1,0 +1,58 @@
+%h1.general-title-margin= t('.catalog')
+.hidden-xs.clearfix
+  .dropdowns.pull-right
+    .dropdown.width-240
+      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        = t('.newest')
+        %i.fa.fa-angle-down.dropdown-icon.pull-right
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"}= t('.newest')
+        %li
+          %a{href: "#"}= t('.popular')
+        %li
+          %a{href: "#"}= t('.price_lowest')
+        %li
+          %a{href: "#"}= t('.price_highest')
+
+  %ul.list-inline.pt-10.mb-25.mr-240
+    %li.mr-35
+      = link_to(books_url, class: 'filter-link') do
+        = t('.all')
+        %span.badge.general-badge= all_books_count
+    - categories.each do |category|
+      %li.mr-35
+        = link_to(category_url(category.name), class: 'filter-link') do
+          = category.name.capitalize
+          %span.badge.general-badge= category.books.count
+
+  .dropdowns.mb-25.visible-xs
+    %p.lead.small.mb-10 Filter by category
+    .dropdown
+      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        Newest first
+        %i.fa.fa-angle-down.dropdown-icon.pull-right
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"}= t('.newest')
+        %li
+          %a{href: "#"}= t('.popular')
+        %li
+          %a{href: "#"}= t('.price_lowest')
+        %li
+          %a{href: "#"}= t('.price_highest')
+
+    %p.lead.small.mb-10 Sort by
+    .dropdown
+      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        Newest first
+        %i.fa.fa-angle-down.dropdown-icon.pull-right
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"}= t('.newest')
+        %li
+          %a{href: "#"}= t('.popular')
+        %li
+          %a{href: "#"}= t('.price_lowest')
+        %li
+          %a{href: "#"}= t('.price_highest')

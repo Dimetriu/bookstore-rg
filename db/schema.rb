@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_212054) do
+ActiveRecord::Schema.define(version: 2018_07_13_193019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_212054) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
-    t.string "image"
     t.text "description"
     t.decimal "price"
     t.integer "quantity"
@@ -101,9 +100,12 @@ ActiveRecord::Schema.define(version: 2018_06_28_212054) do
     t.hstore "dimensions"
     t.string "authors", array: true
     t.string "materials", array: true
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "images", default: [], array: true
     t.index ["authors"], name: "index_books_on_authors", using: :gin
+    t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["materials"], name: "index_books_on_materials", using: :gin
   end
 
@@ -111,6 +113,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_212054) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "books_count", default: 0
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
@@ -194,6 +197,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_212054) do
     t.index ["user_id"], name: "index_welcome_discounts_on_user_id"
   end
 
+  add_foreign_key "books", "categories"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
