@@ -1,19 +1,17 @@
 - present book do |presenter|
-  .mb-120
-    .row
-      .col-xs-6.col-sm-3
-        .general-thumb-wrap
-          .thumbnail.general-thumbnail
-            = presenter.thumbnail(class: 'img-shadow general-thumbnail-img', alt: presenter.name)
-            .thumb-hover
-              .general-thumb-link-wrap
-                = link_to(book_url(book), class: 'thumb-hover-link') do
-                  %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                -# TODO: fix cart link
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-shopping-cart.thumb-icon
-        .general-thumb-info
-          %p.title= book.name
-          %p.font-16.in-gold-500= presenter.price
-          %span.divider-sm
-          %p.lead.small= presenter.authors
+  .col-xs-6.col-sm-3
+    .general-thumb-wrap
+      .thumbnail.general-thumbnail
+        = presenter.thumbnail(class: 'img-shadow general-thumbnail-img', alt: presenter.name)
+        .thumb-hover
+          .general-thumb-link-wrap
+            = link_to(book_url(book), class: 'thumb-hover-link') do
+              %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+            -# TODO: fix cart link
+            %a.thumb-hover-link{href: "#"}
+              %i.fa.fa-shopping-cart.thumb-icon
+    .general-thumb-info
+      %p.title= book.name
+      %p.font-16.in-gold-500= presenter.price
+      %span.divider-sm
+      %p.lead.small= presenter.authors

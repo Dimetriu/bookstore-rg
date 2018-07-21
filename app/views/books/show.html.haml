@@ -20,8 +20,8 @@
           .input-group.general-position
             %a.input-link{href: "#"}
               %i.fa.fa-minus.line-height-40
-            %input.quantity-input{type: "text"}
             -# TODO: add cofeescript
+            %input.form-control.quantity-input{type: "text"}
             %a.input-link{href: "#"}
               %i.fa.fa-plus.line-height-40
         .col-xs-7.col-md-5
@@ -29,3 +29,19 @@
       .general-info-wrap.divider-lg
         %p= t('.description')
         %p.lead.small.line-height-2= presenter.description
+        = presenter.read_more_link
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('.year_of_publication')
+          %p.lead.small.pull-right= presenter.year_of_publication
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('.dimensions')
+          %p.lead.small.pull-right= presenter.dimensions
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t('.materials')
+          %p.lead.small.pull-right= presenter.materials
+  .mb-80
+    = presenter.reviews
+
