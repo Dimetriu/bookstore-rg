@@ -1,0 +1,4 @@
+en:
+  book_presenter:
+    dimensions: "H:%{height} x W:%{width} x D:%{depth}"
+    reviews: "Reviews"

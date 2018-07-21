@@ -13,18 +13,20 @@ Rails.application.routes.draw do
         URI.unescape(params[:text]), {
           size: params[:size],
           background_color: params[:background] })
-    }, as: :avatar
+          }, as: :avatar
 
-    concern :addressable do
-      member do
-        resource :address, controller: "address", only: [:create, :update]
-      end
-    end
+          concern :addressable do
+            member do
+              resource :address, controller: 'address', only: [:create, :update]
+            end
+          end
 
-    resources :categories, only: :show, param: :name
+          resources :categories, only: :show, param: :name
 
-    devise_for :admins
-    devise_for :users, skip: :omniauth_callbacks
+          resources :books, path: '/catalog', only: [:index, :show]
+
+          devise_for :admins
+          devise_for :users, skip: :omniauth_callbacks
 
     resources :users, concerns: :addressable, only: [:show, :destroy] do
       patch :update_email
@@ -33,4 +35,7 @@ Rails.application.routes.draw do
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end

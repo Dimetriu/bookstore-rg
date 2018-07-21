@@ -1,0 +1,35 @@
+%footer.navbar-inverse.fixed-bottom
+  .container
+    .row
+      .col-sm-9
+        %ul.list-inline.general-align.mb-25
+          - if user_signed_in?
+            %li
+              = link_to t('application_layout.home'), root_url, { class: 'nav-link' }
+            %li
+              = link_to t('application_layout.shop'), books_url, { class: 'nav-link' }
+            %li
+              = link_to t('application_layout.orders'), root_url, { class: 'nav-link' }
+            %li
+              = link_to t('application_layout.settings'), user_url(current_user), { class: 'nav-link' }
+          - else
+            %li
+              = link_to t('application_layout.home'), root_url, { class: 'nav-link' }
+            %li
+              = link_to t('application_layout.shop'), books_url, { class: 'nav-link' }
+      .col-sm-3
+        %p.general-nav-mail support@bookstore.com
+        %p.general-nav-number (555)-555-5555
+        %ul.list-inline.general-align
+          %li
+            %a.nav-link{href: "#"}
+              %i.fa.fa-facebook{'aria-hidden': "true"}
+          %li
+            %a.nav-link{href: "#"}
+              %i.fa.fa-twitter{'aria-hidden': "true"}
+          %li
+            %a.nav-link{href: "#"}
+              %i.fa.fa-google-plus{'aria-hidden': "true"}
+          %li
+            %a.nav-link{href: "#"}
+              %i.fa.fa-instagram{'aria-hidden': "true"}

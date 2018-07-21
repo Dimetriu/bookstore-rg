@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_25_201703) do
+ActiveRecord::Schema.define(version: 2018_07_13_193019) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -73,11 +74,89 @@ ActiveRecord::Schema.define(version: 2018_05_25_201703) do
     t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.text "biography"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "authorships", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_authorships_on_author_id"
+    t.index ["book_id"], name: "index_authorships_on_book_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.integer "quantity"
+    t.date "year_of_publication"
+    t.hstore "dimensions"
+    t.string "authors", array: true
+    t.string "materials", array: true
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "images", default: [], array: true
+    t.index ["authors"], name: "index_books_on_authors", using: :gin
+    t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["materials"], name: "index_books_on_materials", using: :gin
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "books_count", default: 0
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number"
+    t.datetime "expiration_month"
+    t.datetime "expiration_year"
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "quantity"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total_price"
+    t.datetime "completed_date"
+    t.string "state"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.text "text_review"
+    t.integer "rating_number"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_id"], name: "index_ratings_on_rateable_id"
+    t.index ["rateable_type"], name: "index_ratings_on_rateable_type"
   end
 
   create_table "users", force: :cascade do |t|
@@ -118,5 +197,9 @@ ActiveRecord::Schema.define(version: 2018_05_25_201703) do
     t.index ["user_id"], name: "index_welcome_discounts_on_user_id"
   end
 
+  add_foreign_key "books", "categories"
+  add_foreign_key "credit_cards", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "users"
   add_foreign_key "welcome_discounts", "users"
 end
