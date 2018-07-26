@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    errors:
+      models:
+        order_item:
+          attributes:
+            quantity:
+              blank: "Must be at least one item in the cart."
