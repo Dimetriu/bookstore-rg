@@ -1,7 +1,8 @@
 class BooksController < GenericController::BaseCatalogController
   def index
     locals books: Book.all
-    locals order_item: current_order.order_items.new
+    new_order = current_user.orders.new
+    locals order_item: new_order.order_items.new
   end
 
   def show
