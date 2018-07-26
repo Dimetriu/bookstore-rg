@@ -1,3 +1,4 @@
 class OrderItem < ApplicationRecord
-  belongs_to :order
+  belongs_to :order, inverse_of: :order_items
+  belongs_to :book, inverse_of: :order_items
 end
