@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_one :welcome_discount, class_name: 'Discounts::WelcomeDiscount', dependent: :nullify
   has_many :ratings, as: :rateable
   has_many :credit_cards, dependent: :nullify
-  has_many :orders, dependent: :nullify
+  has_many :orders, inverse_of: :user
 
   devise :database_authenticatable,
          :registerable,
