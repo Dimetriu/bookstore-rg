@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
           resources :books, path: '/catalog', only: [:index, :show]
 
+          resource :cart, controller: 'cart', only: :show
+
           devise_for :admins
           devise_for :users, skip: :omniauth_callbacks
 
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
       patch :update_email
       patch :update_password
     end
+
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
