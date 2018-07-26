@@ -12,11 +12,7 @@ class AddBooksCountToCategories < ActiveRecord::Migration[5.2]
   def data
     execute <<-SQL.squish
       UPDATE categories
-        SET books_count = (
-          SELECT count(1)
-          FROM books
-          WHERE books.category_id = categories.id
-        )
+        SET books_count = (SELECT count(1) FROM books WHERE books.category_id = categories.id)
     SQL
   end
 end

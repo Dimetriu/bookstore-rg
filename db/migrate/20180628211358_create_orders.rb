@@ -3,9 +3,10 @@ class CreateOrders < ActiveRecord::Migration[5.2]
 
   def change
     create_table :orders do |t|
-      t.decimal :total_price
-      t.datetime :completed_date
-      t.string :state
+      t.decimal :subtotal_amount, precision: 10, scale: 2, null: false, default: 0.0
+      t.decimal :total_amount, precision: 10, scale: 2, null: false, default: 0.0
+      t.datetime :completed_at
+      t.integer :state, default: 0
       t.references :user, foreign_key: true, index: { algorithm: :concurrently }
 
       t.timestamps

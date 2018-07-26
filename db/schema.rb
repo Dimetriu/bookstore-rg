@@ -75,9 +75,9 @@ ActiveRecord::Schema.define(version: 2018_07_13_193019) do
   end
 
   create_table "authors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.text "biography"
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.text "biography", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,14 +92,14 @@ ActiveRecord::Schema.define(version: 2018_07_13_193019) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.decimal "price"
-    t.integer "quantity"
-    t.date "year_of_publication"
+    t.string "name", default: "", null: false
+    t.text "description", default: "", null: false
+    t.decimal "price", precision: 10, scale: 2, default: "0.0", null: false
+    t.integer "quantity", null: false
+    t.datetime "year_of_publication", null: false
     t.hstore "dimensions"
-    t.string "authors", array: true
-    t.string "materials", array: true
+    t.string "authors", default: [], null: false, array: true
+    t.string "materials", default: [], null: false, array: true
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -118,11 +118,11 @@ ActiveRecord::Schema.define(version: 2018_07_13_193019) do
   end
 
   create_table "credit_cards", force: :cascade do |t|
-    t.string "number"
-    t.datetime "expiration_month"
-    t.datetime "expiration_year"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "number", default: "", null: false
+    t.datetime "expiration_month", null: false
+    t.datetime "expiration_year", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -130,18 +130,22 @@ ActiveRecord::Schema.define(version: 2018_07_13_193019) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.decimal "price"
-    t.integer "quantity"
+    t.integer "quantity", default: 1, null: false
+    t.decimal "unit_price", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "total_price", precision: 10, scale: 2, default: "0.0", null: false
     t.bigint "order_id"
+    t.bigint "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_order_items_on_book_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal "total_price"
-    t.datetime "completed_date"
-    t.string "state"
+    t.decimal "subtotal_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "total_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.datetime "completed_at"
+    t.integer "state", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -149,8 +153,8 @@ ActiveRecord::Schema.define(version: 2018_07_13_193019) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.text "text_review"
-    t.integer "rating_number"
+    t.text "text_review", default: "", null: false
+    t.integer "rating_number", default: 0, null: false
     t.string "rateable_type"
     t.integer "rateable_id"
     t.datetime "created_at", null: false
@@ -199,6 +203,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_193019) do
 
   add_foreign_key "books", "categories"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "welcome_discounts", "users"
