@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
           resource :cart, controller: 'cart', only: :show
 
+          resources :order_items, only: [:create, :update, :destroy]
+
           devise_for :admins
           devise_for :users, skip: :omniauth_callbacks
 
