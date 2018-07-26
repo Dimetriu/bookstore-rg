@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  helper_method :current_order
+
   before_action :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -25,4 +28,9 @@ class ApplicationController < ActionController::Base
     klass ||= "#{object.class}Presenter".constantize
     klass.new(object, view_context)
   end
+
+  protected
+    def current_order
+      current_user.orders.in_progress.first || current_user.orders.new
+    end
 end
