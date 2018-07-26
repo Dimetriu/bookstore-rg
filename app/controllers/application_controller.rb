@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
+  # prevents CanCan::AccessDenied with redirect
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_path, alert: exception.message
   end
@@ -16,14 +17,17 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
+  # merge default_url_options for devise
   def self.default_url_options(options={})
     options.merge({ :locale => I18n.locale })
   end
 
+  # handles the local assignments instead of instances
   def locals(names)
     render locals: names
   end
 
+  # helper method for Presenter class
   def present(object, klass = nil)
     klass ||= "#{object.class}Presenter".constantize
     klass.new(object, view_context)
