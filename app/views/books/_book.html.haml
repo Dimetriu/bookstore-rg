@@ -7,9 +7,8 @@
           .general-thumb-link-wrap
             = link_to(book_url(book), class: 'thumb-hover-link') do
               %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-            -# TODO: fix cart link
-            %a.thumb-hover-link{href: "#"}
-              %i.fa.fa-shopping-cart.thumb-icon
+              = link_to(cart_url, class: 'thumb-hover-link') do
+                %i.fa.fa-shopping-cart.thumb-icon
     .general-thumb-info
       %p.title= book.name
       %p.font-16.in-gold-500= presenter.price
