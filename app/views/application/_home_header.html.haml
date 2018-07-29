@@ -25,7 +25,7 @@
                 = user_avatar(current_user, class: 'col-pic img-circle avatar_text')
                 = username(current_user)
               %li
-                = link_to t('application_layout.orders'), root_url
+                = link_to t('application_layout.orders'), order_url(current_order)
               %li
                 = link_to t('application_layout.settings'), user_url(current_user)
               %li.divider{ role: 'separator' }

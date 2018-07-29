@@ -1,8 +1,8 @@
 en:
-  cart:
+  order:
     show:
       cart: "Cart"
-    cart_header:
+    order_header:
       price: "Price"
       quantity: "Quantity"
       subtotal: "Subtotal"

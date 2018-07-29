@@ -8,8 +8,7 @@ class OrderItem < ApplicationRecord
   before_save :setup_prices
 
   def unit_price
-    discount_value = (user.coupon.valid? ? user.coupon.value : 1)
-    persisted? ? self[:unit_price] : ((book.price - (book.price * discount_value)).ceil(2))
+    persisted? ? self[:unit_price] : book.price
   end
 
   def total_price

@@ -9,7 +9,7 @@
             %li
               = link_to t('application_layout.shop'), books_url, { class: 'nav-link' }
             %li
-              = link_to t('application_layout.orders'), root_url, { class: 'nav-link' }
+              = link_to t('application_layout.orders'), order_url(current_order), { class: 'nav-link' }
             %li
               = link_to t('application_layout.settings'), user_url(current_user), { class: 'nav-link' }
           - else

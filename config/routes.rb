@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
           resource :cart, controller: 'cart', only: :show
 
+          resources :orders, only: [:show, :update]
+
           resources :order_items, only: [:create, :update, :destroy]
 
           devise_for :admins
