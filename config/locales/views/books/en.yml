@@ -3,6 +3,7 @@ en:
     show:
       back: "Back to results"
       button: "Add to Cart"
+      disable_with: "Adding..."
       description: "Description"
       year_of_publication: "Year of publication"
       dimensions: "Dimensions"

@@ -20,6 +20,6 @@ class Order < ApplicationRecord
 
   private
     def update_subtotal
-      self[:subtotal_amout] = subtotal
+      self[:subtotal_amount] = subtotal
     end
 end

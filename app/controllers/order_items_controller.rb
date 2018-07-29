@@ -3,7 +3,9 @@ class OrderItemsController < ApplicationController
   after_action :restore_order_items, except: :create
 
   def create
-    @order_item = current_order.order_items.create(order_item_params)
+    @order = current_order
+    @order_item = @order.order_items.new(order_item_params)
+    @order.save
   end
 
   def update
@@ -16,7 +18,7 @@ class OrderItemsController < ApplicationController
 
   private
     def order_item_params
-      params.require(:order_item).require(:quantity, :book_id)
+      params.require(:order_item).permit(:quantity, :book_id)
     end
 
     def set_order_item

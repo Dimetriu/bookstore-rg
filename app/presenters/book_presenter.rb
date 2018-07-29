@@ -30,8 +30,8 @@ class BookPresenter < BaseCatalogPresenter
 
   def dimensions
     height = book.dimensions.height
-    width = book.dimensions.width
-    depth = book.dimensions.depth
+    width  = book.dimensions.width
+    depth  = book.dimensions.depth
 
     I18n.t('book_presenter.dimensions', height: height, width: width, depth: depth)
   end

@@ -1,4 +1,5 @@
-class CategoriesController < GenericController::BaseCatalogController
+class CategoriesController < ApplicationController
+  layout 'catalog'
 
   def show
     category = Category.find_by(name: params[:name])

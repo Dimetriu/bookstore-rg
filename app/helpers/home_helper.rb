@@ -14,4 +14,8 @@ module HomeHelper
       user.first_name
     end
   end
+
+  def cart_items_quantity
+    current_order.order_items.sum(:quantity)
+  end
 end

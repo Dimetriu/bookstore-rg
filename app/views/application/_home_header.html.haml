@@ -37,9 +37,10 @@
           %li
             = link_to t('application_layout.signup'), new_user_registration_url
         %li
-          = link_to root_url do
+          = link_to root_url, remote: true do
             %span.shop-icon
-              %span.shop-quantity 3
+              - if user_signed_in?
+                %span.shop-quantity= cart_items_quantity
       - if admin_signed_in?
         %li.dropdown
           = link_to t('nav.header.admin'), rails_admin.dashboard_url, class: 'dropdown-toggle', 'data-toggle': 'dropdown', 'role': 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'

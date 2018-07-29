@@ -7,7 +7,7 @@ class OrderItem < ApplicationRecord
   before_save :setup_prices
 
   def unit_price
-    presisted? ? self[:unit_price] : book.price
+    persisted? ? self[:unit_price] : book.price
   end
 
   def total_price
