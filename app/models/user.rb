@@ -5,7 +5,7 @@ class User < ApplicationRecord
   default_scope -> { where(deleted_at: nil) }
 
   has_many :addresses, -> { where(kind: [:billing, :shipping]) }, as: :addressable
-  has_one :welcome_discount, class_name: 'Discounts::WelcomeDiscount', dependent: :nullify
+  has_one  :coupon, class_name: 'Discounts::WelcomeDiscount', dependent: :nullify
   has_many :ratings, as: :rateable
   has_many :credit_cards, dependent: :nullify
   has_many :orders, inverse_of: :user
@@ -28,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def after_confirmation
-    create_welcome_discount
+    create_coupon
   end
 
   def self.from_omniauth(auth)

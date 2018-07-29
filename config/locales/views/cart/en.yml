@@ -1,0 +1,9 @@
+en:
+  cart:
+    show:
+      cart: "Cart"
+    cart_header:
+      price: "Price"
+      quantity: "Quantity"
+      subtotal: "Subtotal"
+      product: "Product"

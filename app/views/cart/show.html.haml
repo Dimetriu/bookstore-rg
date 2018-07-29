@@ -1,1 +1,4 @@
-%h3 Cart yay :)
+%h1.general-title-margin= t('.cart')
+= render 'cart_header'
+= render @order_items
+= render 'cart_footer'

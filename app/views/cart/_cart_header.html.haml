@@ -1,0 +1,25 @@
+.visible-xs
+  .general-cart-item.divider-lg-bottom
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600= t('.price')
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600= t('.quantity')
+      %tr
+        %td
+          %span.in-grey-600= t('.subtotal')
+.hidden-xs
+  %table.table.table-hover
+    %tr.no-hover
+      %th.col-pic.pl-0
+        %span.in-grey-600= t('.product')
+      %th.col-title
+      %th.col-price
+        %span.in-grey-600= t('.price')
+      %th.col-quantity
+        %span.in-grey-600= t('.quantity')
+      %th.col-total
+        %span.in-grey-600= t('.subtotal')
+      %th.col-close
