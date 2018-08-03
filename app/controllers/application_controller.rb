@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
 
   protected
     def current_order
-      if user_signed_in?
-        current_user.orders.in_progress.first || current_user.orders.new
-      end
+      @_current_order = current_user&.orders&.in_progress&.first ||
+      current_user&.orders&.new ||
+      Order.new
     end
 end

@@ -14,6 +14,7 @@
       %h1.mt-res-0= presenter.name
       %p.lead.small= presenter.authors
       .row
+        .col-md-12
         = form_for(@order_item, remote: true) do |f|
           .col-xs-12.col-md-4
             %p.h1.in-gold-500.mt-10= presenter.price

@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :credit_cards, dependent: :nullify
   has_many :orders, inverse_of: :user
 
+  validates :email, :password, presence: true, allow_blank: true, if: :guest?
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -65,5 +67,12 @@ class User < ApplicationRecord
 
   def inactive_message
     !deleted_at ? super : :deleted_account
+  end
+
+  def use_coupon!
+    User.transaction do
+      coupon.use!
+      save!
+    end
   end
 end

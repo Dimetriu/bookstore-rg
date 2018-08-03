@@ -25,11 +25,11 @@ Rails.application.routes.draw do
 
           resources :books, path: '/catalog', only: [:index, :show]
 
+          resources :order_items, only: [:create, :update, :destroy]
+
           resource :cart, controller: 'cart', only: :show
 
-          resources :orders, only: [:show, :update]
-
-          resources :order_items, only: [:create, :update, :destroy]
+          resources :orders, only: [:update, :destroy]
 
           devise_for :admins
           devise_for :users, skip: :omniauth_callbacks

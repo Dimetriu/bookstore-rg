@@ -1,9 +1,0 @@
-en:
-  order:
-    show:
-      cart: "Cart"
-    order_header:
-      price: "Price"
-      quantity: "Quantity"
-      subtotal: "Subtotal"
-      product: "Product"

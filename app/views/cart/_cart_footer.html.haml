@@ -1,15 +1,13 @@
 .general-order-wrap
   .row
     .col-sm-4
-      = form_for(current_order, remote: true) do |f|
-        = f.label "Enter Your Coupon Code"
-        = f.input :subtotal_amount, class: 'input-group.general-input-group'
-      -# .input-group.general-input-group
-      -#   %label.input-label Enter Your Coupon Code
-      -#   %input.form-control.mb-30{type: "text", placeholder: "Enter Your Coupon Code "}
+      .test-text
+      -# = form_for(current_order, url: order_url(current_order)) do |f|
+      -#   %label.input-label= t('.labels.coupon_number')
+      -#   %input.form-control.mb-30{type: "text", placeholder: t('.placeholders.coupon_number'), name: "coupon_number"}
       -#   %div
-      -#     %button.btn.btn-primary.mr-5.mb-15.visible-xs-inline-block Apply Coupon
-      -#     %button.btn.btn-primary.mb-15.res-block Update cart
+      -#     = f.button :submit, "Apply Coupon", class: 'btn btn-primary mr-5 mb-15 visible-xs-inline-block'
+      -#     = f.button :submit, "Apply Coupon", class: 'btn btn-primary mb-15 res-block'
     .col-sm-8
       .res-mr-200.text-center.general-text-right
         %p.in-gold-500.font-18 Order Summary
@@ -18,7 +16,7 @@
             %td
               %p.font-16 Subtotal:
             %td
-              %p.font-16 €117.69
+              %p.font-16 11
           %tr
             %td
               %p.font-16 Coupon:
