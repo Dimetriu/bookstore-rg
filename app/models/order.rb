@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  default_scope -> { where(state: [:in_progress, :completed]) }
 
   enum state: {in_progress: 0, completed: 1, cancelled: 2}
 
@@ -9,6 +10,18 @@ class Order < ApplicationRecord
   def update_subtotal
     self[:subtotal_amount] = subtotal
     save!
+  end
+
+  def cancel
+    cancelled!
+  end
+
+  def complete
+    completed!
+  end
+
+  def self.cancelled
+    unscoped.where(state: :cancelled)
   end
 
   private

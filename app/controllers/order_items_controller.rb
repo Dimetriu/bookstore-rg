@@ -1,6 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :set_order_item, except: :create
-  after_action  :restore_order_items, except: :create
+  after_action  :refresh_order_items, except: :create
 
   def create
     order_item = current_order.order_items.find_by("book_id = ?", _product_id[:book_id])
@@ -32,12 +32,7 @@ class OrderItemsController < ApplicationController
       @order_item = OrderItem.find(params[:id])
     end
 
-    def restore_order_items
+    def refresh_order_items
       @order_items = current_order.order_items
     end
-
-    # def restore_in_session(quantity: nil, unit_price: nil)
-    #   session[:unit_price] = unit_price
-    #   session[:quantity]   = quantity
-    # end
 end

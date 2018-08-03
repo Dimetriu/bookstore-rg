@@ -16,9 +16,6 @@ class BooksController < ApplicationController
       @order_item = OrderItem.new
     end
 
-  rescue Unauthorized
-    authenticate_user!
-
     render layout: 'application'
   end
 end
