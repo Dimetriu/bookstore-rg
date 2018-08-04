@@ -278,16 +278,16 @@
   }
 }
 
-.input-link {
-  font-size: $font-size-base;
-  color: $grey-350;
-  display: inline-block;
-  // float: left;
-  &:hover,
-  &:focus {
-    color: $grey-350
-  }
-}
+// .input-link {
+//   font-size: $font-size-base;
+//   color: $grey-350;
+//   display: inline-block;
+//   // float: left;
+//   &:hover,
+//   &:focus {
+//     color: $grey-350
+//   }
+// }
 
 .quantity-input {
   max-width: 40px;

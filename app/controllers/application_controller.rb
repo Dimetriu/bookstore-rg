@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   protected
     def current_order
       @_current_order = current_user&.orders&.in_progress&.first ||
-      current_user&.orders&.new ||
-      Order.new
+      current_user&.orders&.in_progress.new ||
+      Order.in_progress.new
     end
 end

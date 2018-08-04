@@ -7,15 +7,14 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    user_signed_in? ? process_order_item : @order_item = OrderItem.new
+    render layout: 'application'
+  end
 
-    if user_signed_in?
+  private
+    def process_order_item
       order_item = current_order.order_items.find_by("book_id = ?", @book.id)
       new_order_item = current_order.order_items.new(book_id: @book.id)
       @order_item = order_item.nil? ? new_order_item : order_item
-    else
-      @order_item = OrderItem.new
     end
-
-    render layout: 'application'
-  end
 end

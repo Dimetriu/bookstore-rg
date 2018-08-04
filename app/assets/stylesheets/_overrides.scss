@@ -10,6 +10,33 @@ body {
   min-height: 100%;
 }
 
+// floating left for minus
+.input-link-minus {
+  font-size: $font-size-base;
+  color: $grey-350;
+  display: inline-block;
+  float: left;
+  &:hover,
+  &:focus {
+    color: $grey-350
+  }
+}
+
+// floating right for plus
+.input-link-plus {
+  font-size: $font-size-base;
+  color: $grey-350;
+  display: inline-block;
+  // float: right;
+  &:hover,
+  &:focus {
+    color: $grey-350
+  }
+}
+
+// .quantity-input {
+//   clear: both;
+// }
 // @keyframes alert-open {
 //   from {
 //     margin-top: -50px;
