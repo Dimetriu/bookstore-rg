@@ -12,3 +12,7 @@ en:
         coupon_number: "Enter Your Coupon Code"
       placeholders:
         coupon_number: "Enter Your Coupon Code "
+      order_summary: "Order Summary"
+      subtotal: "Subtotal:"
+      coupon: "Coupon:"
+      order_total: "Order Total:"

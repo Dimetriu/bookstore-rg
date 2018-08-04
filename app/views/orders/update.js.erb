@@ -1,0 +1,5 @@
+$(document).ready(function() {
+  $(".subtotal").html("<%= number_to_currency(current_order.subtotal_amount, unit: '€', precision: 2) %>")
+  $(".coupon").html("<%= number_to_currency(current_order.coupon_value, unit: '€', precision: 2) %>")
+  $(".total").html("<%= number_to_currency(current_order.total_amount, unit: '€', precision: 2) %>")
+});

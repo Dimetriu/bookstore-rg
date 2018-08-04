@@ -1,31 +1,32 @@
-.general-order-wrap
-  .row
-    .col-sm-4
-      .test-text
-      -# = form_for(current_order, url: order_url(current_order)) do |f|
-      -#   %label.input-label= t('.labels.coupon_number')
-      -#   %input.form-control.mb-30{type: "text", placeholder: t('.placeholders.coupon_number'), name: "coupon_number"}
-      -#   %div
-      -#     = f.button :submit, "Apply Coupon", class: 'btn btn-primary mr-5 mb-15 visible-xs-inline-block'
-      -#     = f.button :submit, "Apply Coupon", class: 'btn btn-primary mb-15 res-block'
-    .col-sm-8
-      .res-mr-200.text-center.general-text-right
-        %p.in-gold-500.font-18 Order Summary
-        %table.general-summary-table.general-summary-table-right.general-text-right
-          %tr
-            %td
-              %p.font-16 Subtotal:
-            %td
-              %p.font-16 11
-          %tr
-            %td
-              %p.font-16 Coupon:
-            %td
-              %p.font-16 €0.00
-          %tr
-            %td
-              %strong.font-18 Order Total:
-            %td
-              %strong.font-18 €117.69
-        %button.btn.btn-default.mb-20.visible-xs-inline-block Checkout
-%button.btn.btn-default.mb-20.hidden-xs.center-block Checkout
+- present current_order do |presenter|
+  .general-order-wrap
+    .row
+      .col-sm-4
+        .test-text
+          = form_with(model: current_order) do |f|
+            %label.input-label= t('.labels.coupon_number')
+            %input.form-control.mb-30{type: "text", placeholder: t('.placeholders.coupon_number'), name: "coupon_number"}
+            %div
+              = f.button :submit, "Apply Coupon", class: 'btn btn-primary mr-5 mb-15 visible-xs-inline-block'
+              = f.button :submit, "Apply Coupon", class: 'btn btn-primary mb-15 res-block'
+      .col-sm-8
+        .res-mr-200.text-center.general-text-right
+          %p.in-gold-500.font-18= t('.order_summary')
+          %table.general-summary-table.general-summary-table-right.general-text-right
+            %tr
+              %td
+                %p.font-16= t('.subtotal')
+              %td
+                %p.subtotal.font-16= presenter.subtotal
+            %tr
+              %td
+                %p.font-16= t('.coupon')
+              %td
+                %p.coupon.font-16= presenter.coupon
+            %tr
+              %td
+                %strong.font-18= t('.order_total')
+              %td
+                %strong.total.font-18= presenter.total
+          %button.btn.btn-default.mb-20.visible-xs-inline-block Checkout
+  %button.btn.btn-default.mb-20.hidden-xs.center-block Checkout

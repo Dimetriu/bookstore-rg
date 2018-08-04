@@ -15,19 +15,7 @@
       %p.lead.small= presenter.authors
       .row
         .col-md-12
-        = form_for(@order_item, remote: true) do |f|
-          .col-xs-12.col-md-4
-            %p.h1.in-gold-500.mt-10= presenter.price
-          .col-xs-5.col-md-3
-            .input-group.general-position
-              %a.input-link-plus{href: "#"}
-                %i.fa.fa-plus.line-height-40
-                = f.input :book_id, as: :hidden, input_html: { value: presenter.id }
-                = f.input_field :quantity, autofocus: true, as: :string, class: 'form-control quantity-input', id: "quantity"
-              %a.input-link-minus{href: "#"}
-                %i.fa.fa-minus.line-height-40
-          .col-xs-7.col-md-5
-            = f.button :submit, t('.button'), class: 'btn btn-default pull-right general-position', data: { "disable-with" => t('.disable_with') }
+          = render 'order_items/form', order_item: @order_item, presenter: presenter
       .general-info-wrap.divider-lg
         %p= t('.description')
         %p.lead.small.line-height-2= presenter.description

@@ -12,6 +12,17 @@ class Order < ApplicationRecord
     save!
   end
 
+  def update_total
+    return if user.coupon.used_at?
+
+    self[:total_amount] = apply_discount_if_available
+    save!
+  end
+
+  def coupon_value
+    self[:subtotal_amount] - self[:total_amount]
+  end
+
   def cancel
     cancelled!
   end
@@ -44,7 +55,7 @@ class Order < ApplicationRecord
           save!
         end
 
-        self[:subtotal_amount] = (subtotal - (subtotal * user.coupon.value)).ceil(2)
+        (subtotal - (subtotal * user.coupon.value)).ceil(2)
       end
     end
 end

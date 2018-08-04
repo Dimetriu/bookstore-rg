@@ -1,0 +1,5 @@
+en:
+  order_items:
+    form:
+      button: "Add to Cart"
+      disable_with: "Adding..."

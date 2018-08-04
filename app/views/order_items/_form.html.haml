@@ -1,13 +1,13 @@
-= form_for(@order_item, remote: true) do |f|
+= form_for(order_item, remote: true) do |f|
   .col-xs-12.col-md-4
     %p.h1.in-gold-500.mt-10= presenter.price
   .col-xs-5.col-md-3
     .input-group.general-position
-      %a.input-link{href: "#"}
-        %i.fa.fa-minus.line-height-40
-        = f.input :book_id, as: :hidden, input_html: { value: presenter.id }
-        = f.text_field :quantity, class: 'form-control quantity-input'
-      %a.input-link{href: "#"}
+      %a.input-link-plus{href: "#"}
         %i.fa.fa-plus.line-height-40
+        = f.input :book_id, as: :hidden, input_html: { value: presenter.id }
+        = f.input_field :quantity, autofocus: true, as: :string, class: 'form-control quantity-input', id: "quantity"
+      %a.input-link-minus{href: "#"}
+        %i.fa.fa-minus.line-height-40
   .col-xs-7.col-md-5
     = f.button :submit, t('.button'), class: 'btn btn-default pull-right general-position', data: { "disable-with" => t('.disable_with') }

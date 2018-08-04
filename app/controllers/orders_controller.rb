@@ -2,15 +2,12 @@ class OrdersController < ApplicationController
 
   def update
     if params["coupon_number"] == current_user.coupon.number
-      current_order.update_subtotal_with_discount
-      redirect_to cart_url, notice: "aaaa"
-    else
-      redirect_to cart_url, notice: "nnn"
+      current_order.update_total
     end
   end
 
   def destroy
-    current_order.cancelled!
+    current_order.cancel
   end
 
   private
