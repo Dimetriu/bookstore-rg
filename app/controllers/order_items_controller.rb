@@ -1,6 +1,7 @@
 class OrderItemsController < ApplicationController
   before_action :set_order_item, except: :create
   after_action  :refresh_order_items, except: :create
+  after_action  :save_order
 
   def create
     order_item = current_order.order_items.find_by("book_id = ?", _product_id[:book_id])
@@ -21,6 +22,10 @@ class OrderItemsController < ApplicationController
   private
     def _product_id
       params.require(:order_item).permit(:book_id)
+    end
+
+    def save_order
+      current_order.save
     end
 
     def order_item_params

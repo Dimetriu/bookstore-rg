@@ -2,16 +2,11 @@ class OrdersController < ApplicationController
 
   def update
     if params["coupon_number"] == current_user.coupon.number
-      current_order.update_total
+      current_order.get_discount
     end
   end
 
-  def destroy
+  def cancel
     current_order.cancel
   end
-
-  private
-    def order_params
-      params.require(:order).permit(:coupon_number)
-    end
 end

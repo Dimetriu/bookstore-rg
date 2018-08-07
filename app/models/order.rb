@@ -7,16 +7,11 @@ class Order < ApplicationRecord
   has_many :order_items, inverse_of: :order
   has_many :books, through: :order_items, inverse_of: :orders
 
-  def update_subtotal
-    self[:subtotal_amount] = subtotal
-    save!
-  end
+  before_save :update_amounts
 
-  def update_total
-    return if user.coupon.used_at?
-
-    self[:total_amount] = apply_discount_if_available
-    save!
+  def update_amounts
+    self[:subtotal_amount] = calculate_for(:subtotal)
+    user.coupon.used_at? ? self[:total_amount] = calculate_for(:total) : self[:total_amount] = calculate_for(:subtotal)
   end
 
   def coupon_value
@@ -36,26 +31,26 @@ class Order < ApplicationRecord
   end
 
   private
-    def subtotal
+    def calculate_for(name)
       order_items.collect do |item|
-        if item.valid?
-          (item.quantity * item.unit_price)
+        return unless item.valid?
+        case name
+        when :subtotal
+          subtotal(item)
+        when :total
+          total(item)
         else
           0
         end
       end.sum
     end
 
-    def apply_discount_if_available
-      Order.transaction do
-        raise ActiveRecord::Rollback if user.coupon.used_at?
+    def subtotal(item)
+      (item.quantity * item.unit_price)
+    end
 
-        User.transaction do
-          user.use_coupon!
-          save!
-        end
-
-        (subtotal - (subtotal * user.coupon.value)).ceil(2)
-      end
+    def total(item)
+      ((item.quantity * item.unit_price) - ((item.quantity * item.unit_price) * user.coupon.value)
+      .ceil(2))
     end
 end

@@ -5,7 +5,7 @@ class OrderItem < ApplicationRecord
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   before_save :setup_prices
-  after_save :save_order
+  after_save  :save_order
 
   def unit_price
     persisted? ? self[:unit_price] : book.price
@@ -22,6 +22,6 @@ class OrderItem < ApplicationRecord
     end
 
     def save_order
-      order.update_subtotal
+      order.save!
     end
 end
